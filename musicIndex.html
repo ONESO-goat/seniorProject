@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonicRate | Music Insights</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Sonic<span>Rate</span></h1>
+            <p>Discover the "Why" behind the rhythm.</p>
+        </header>
+
+        <section class="search-area">
+            <div class="search-bar">
+                <input type="text" placeholder="Enter a song or artist..." id="songInput">
+                <button type="submit" id="searchBtn">Analyze</button>
+            </div>
+        </section>
+
+        <main class="result-container" id="resultContainer">
+            <div class="rating-card">
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/150" alt="Album Art" class="album-art">
+                    <div class="track-info">
+                        <h2 class="track-name">Starboy</h2>
+                        <p class="artist-name">The Weeknd</p>
+                        <div class="rating-badge">8.5</div>
+                    </div>
+                </div>
+                
+                <div class="analysis-section">
+                    <h3>Analysis Reasoning</h3>
+                    <p class="reasoning-text">
+                        The track features a heavy synth-wave influence with a consistent 120 BPM driving the energy. The lyrical depth explores themes of fame and transformation, which resonates well with the production's dark, cinematic atmosphere.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
