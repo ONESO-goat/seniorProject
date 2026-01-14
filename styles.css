@@ -1,0 +1,163 @@
+:root {
+    --primary: #1DB954; /* Spotify Green */
+    --bg-dark: #0f0f12;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-main: #ffffff;
+    --text-dim: #b3b3b3;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+header h1 span {
+    color: var(--primary);
+}
+
+header p {
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+}
+
+/* Search Styling */
+.search-area {
+    margin-bottom: 3rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    background: var(--card-bg);
+    padding: 8px;
+    border-radius: 50px;
+    border: 1px solid var(--glass-border);
+}
+
+.search-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 0 20px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    background: var(--primary);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 40px;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.search-bar button:hover {
+    transform: scale(1.05);
+}
+
+/* Result Card */
+.rating-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.card-header {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.album-art {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.track-info {
+    flex: 1;
+}
+
+.track-name {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.artist-name {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.rating-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: black;
+    padding: 5px 15px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.analysis-section h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.reasoning-text {
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .search-bar {
+        border-radius: 15px;
+    }
+}
