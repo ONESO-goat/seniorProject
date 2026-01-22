@@ -1,0 +1,35 @@
+.my_photo {
+    justify-content: center;
+    display: flex;
+}
+
+.myphoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* ⬅ fills circle perfectly */
+    object-position: center; /* centers your face */
+    display: block;
+    box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.8);
+}
+.all_about_me{
+    justify-content: center;
+    display: flex;
+    margin-top: 300px;
+}
+.recap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: rgb(243, 241, 241);
+    height: 90px;
+    margin-top: 80px;
+}
+
+
+
+.links {
+    font-size: 18px;
+    text-decoration: none;
+    color: inherit;
+}

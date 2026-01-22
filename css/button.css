@@ -1,0 +1,63 @@
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: transparent;
+    border: 2px solid #444;
+    color: #444;
+
+    padding: 10px 18px;
+    border-radius: 999px;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: 
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+        position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* Arrow shape */
+.arrow {
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+}
+
+/* Hover effect */
+.back-btn:hover {
+    background-color: #111;
+    color: white;
+    border-color: #111;
+}
+
+
+
+.back-btn-simple {
+    background-color: #f3f3f3;
+    border: none;
+    border-radius: 8px;
+
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 
+        background-color 0.25s ease,
+        transform 0.15s ease;
+}
+
+.back-btn-simple:hover {
+    background-color: #ddd;
+    transform: translateX(-3px);
+}
+
