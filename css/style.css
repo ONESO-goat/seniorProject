@@ -1,0 +1,133 @@
+/* ---------- Global Reset & Base ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(60, 59, 59);
+    background-color: white;
+}
+
+/* ---------- Back Button ---------- */
+.back {
+    padding: 20px;
+}
+
+.back_button {
+    font-size: 48px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* ---------- Title Section ---------- */
+.title {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.header {
+    font-size: 40px;
+    text-align: center;
+    color: black;
+    max-width: 900px;
+    line-height: 1.2;
+}
+
+
+
+/* ---------- Description & Author ---------- */
+.description,
+.author {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.author a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.line_under_author {
+    margin: 25px auto 0;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 40px;
+}
+
+/* ---------- Article Layout ---------- */
+.article {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.paragraph {
+    max-width: 720px;         /* publication column width */
+    padding: 0 20px;
+    font-size: 20px;
+    line-height: 2.2;
+    font-weight: 200;
+}
+
+/* ---------- Signature / Image ---------- */
+.MilesMorales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 160px 0 120px;
+}
+
+.MilesMorales img:first-child {
+    max-width: 420px;   /* larger main image */
+}
+
+.name_in_cursive {
+    transform: rotate(25deg);
+    width: 320px;       /* much larger signature */
+    margin-top: -80px;  /* overlap for layered effect */
+}
+
+
+/* ---------- Footer ---------- */
+.recap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: rgb(243, 241, 241);
+    height: 90px;
+    margin-top: 80px;
+}
+
+
+
+.links {
+    font-size: 18px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 768px) {
+    .header {
+        font-size: 30px;
+    }
+
+    .software {
+        margin-left: 0;
+    }
+
+    .paragraph {
+        font-size: 18px;
+        line-height: 2;
+    }
+
+    .line_under_author {
+        width: 70%;
+    }
+}

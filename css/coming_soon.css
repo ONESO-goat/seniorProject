@@ -1,0 +1,36 @@
+.comingsoon{
+    justify-content: center;
+    display: flex;
+    font-size: 100px;
+}
+
+.maybe_not{
+    justify-content: center;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: -50px;
+}
+
+
+
+.recap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: rgb(243, 241, 241);
+    height: 90px;
+    margin-top: 80px;
+}
+
+
+.image{
+    justify-content: center;
+    display: flex;
+    height: 400px;
+}
+.links {
+    font-size: 18px;
+    text-decoration: none;
+    color: inherit;
+}

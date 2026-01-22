@@ -1,0 +1,8 @@
+/.vscode/
+/app
+*.py
+test.html
+dashboard.html
+styles.html
+a.out
+*.cpp

@@ -1,0 +1,26 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.snap {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 4rem;
+    box-sizing: border-box;
+}
