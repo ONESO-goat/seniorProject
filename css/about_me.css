@@ -1,9 +1,22 @@
 .my_photo {
+    width: 60vw;
+    max-width: 700px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    border: 1px solid black;
+
+    cursor: pointer;
+    transition: max-width 0.5s;
+    box-shadow:-3px 8px 20px rgba(0, 0, 0, 0.8);
+
+    overflow: hidden;   /* ⬅ IMPORTANT */
+}
+.m{
     justify-content: center;
     display: flex;
 }
-
-.myphoto img {
+.my_photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;   /* ⬅ fills circle perfectly */
@@ -11,11 +24,44 @@
     display: block;
     box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.8);
 }
+
+
 .all_about_me{
     justify-content: center;
     display: flex;
     margin-top: 300px;
+    align-content: center;
 }
+
+
+.more_of_me {
+    max-width: 720px;         /* publication column width */
+    padding: 10 20px;
+    font-size: 20px;
+    line-height: 2.2;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+
+/* ---------- Signature / Image ---------- */
+.MilesMorales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 160px 0 120px;
+}
+
+.MilesMorales img:first-child {
+    max-width: 420px;   /* larger main image */
+}
+
+.name_in_cursive {
+    transform: rotate(25deg);
+    width: 320px;       /* much larger signature */
+    margin-top: -80px;  /* overlap for layered effect */
+}
+
 .recap {
     display: flex;
     justify-content: center;
