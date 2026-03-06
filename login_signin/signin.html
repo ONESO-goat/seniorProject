@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PanthoFlow - signin</title>
+    <link rel="stylesheet" href="../css/sign_up_log_in.css">
+    <!--<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">-->
+    <script src="../js/signup.js" defer></script>
+    <style>
+        /* Overrides specific to signup page */
+
+        /* Center the card fully since there's no quote beside it */
+        .hero-container {
+            justify-content: center;
+        }
+
+        /* Make the card a bit wider now that it's the sole focus */
+        .signup-card {
+            width: 420px;
+        }
+
+        /* The input fields inside the card */
+        .card-input {
+            width: 100%;
+            padding: 11px 14px;
+            margin: 8px 0;
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .card-input:focus {
+            border-color: #00c2cb;
+        }
+
+        /* The submit / create account button inside the card */
+        .card-submit {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: #82d45e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .card-submit:hover {
+            background-color: #96e672;
+            transform: translateY(-1px);
+        }
+
+        /* Small label above input groups */
+        .input-label {
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: #636e72;
+            margin-top: 10px;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        /* Error / success message area */
+        .form-message {
+            font-size: 13px;
+            margin-top: 10px;
+            min-height: 18px;
+            color: #e74c3c;
+        }
+
+        .form-message.success {
+            color: #27ae60;
+        }
+
+        /* Divider between role selector and form */
+        .divider {
+            border: none;
+            border-top: 1px solid #f0f0f0;
+            margin: 20px 0;
+        }
+
+        /* Subtle tag showing which role was picked */
+        .role-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            background: #f0fffe;
+            color: #00c2cb;
+            border: 1px solid #00c2cb33;
+            border-radius: 20px;
+            padding: 3px 10px;
+            margin-bottom: 12px;
+        }
+
+        /* Hide the form until a role is selected */
+        .signup-form {
+            display: none;
+        }
+
+        .signup-form.visible {
+            display: block;
+        }
+
+        /* Already have an account link */
+        .login-link {
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            color: #00c2cb;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-nav">
+        <div class="nav-links">
+            <button class="nav-btn">
+                <a href="../html/panthoflow_about.html">About</a>
+            </button>
+            <button class="nav-btn">
+                <a href="../html/credits.html">Credits</a>
+            </button>
+        </div>
+    </header>
+
+    <!-- Single centered card, no hero-text beside it -->
+    <main class="hero-container">
+        <div class="signup-card">
+
+            <img class="logo" src="../images/betterPantho.png" alt="PanthoFlow Logo">
+            <h2>Create your account</h2>
+            <p class="subtitle">Choose what describes you best:</p>
+
+            <!-- Step 1: pick a role -->
+            <div class="option-list" id="role-list">
+                <button class="option-btn" data-role="Education">Education (teacher or student)</button>
+                <button class="option-btn" data-role="Business">Small business (startup, blog)</button>
+                <button class="option-btn" data-role="Personal">Personal (home, family)</button>
+            </div>
+
+            <!-- Step 2: fill in details (hidden until role picked) -->
+            <div class="signup-form" id="signup-form">
+                <hr class="divider">
+                <span class="role-tag" id="role-tag">Personal</span>
+
+                <label class="input-label">Username</label>
+                <input type="text" class="card-input" id="signup-username" placeholder="e.g. creative_ben">
+
+                <label class="input-label">Email <span style="color:#b2bec3">(optional)</span></label>
+                <input type="email" class="card-input" id="signup-email" placeholder="you@example.com">
+
+                <label class="input-label">Password</label>
+                <input type="password" class="card-input" id="signup-password" placeholder="Min. 8 characters">
+
+                <p class="form-message" id="form-message"></p>
+
+                <div class="halo-container" style="width:100%">
+                    <button class="card-submit" id="create-btn">Create Account</button>
+                </div>
+            </div>
+
+            <p class="terms">By signing up, you agree to PanthoFlow's<br>
+                <a href="#">Terms & Conditions</a>
+            </p>
+
+            <p class="login-link">Already have an account? <a href="../login_signin/index.html">Log in</a></p>
+
+        </div>
+    </main>
+
+</body>
+</html>

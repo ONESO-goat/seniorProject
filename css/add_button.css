@@ -1,0 +1,44 @@
+.add-btn {
+    /* Position it floating in the bottom right corner */
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+
+    /* Create a perfect circle */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Theme: Pink to match your Discovery card */
+    background-color: #ff85a2; 
+    color: white;
+    border: none;
+    
+    /* Typography */
+    font-size: 30px;
+    font-weight: 300; /* Thin '+' looks more elegant */
+    cursor: pointer;
+
+    /* The 'Magic' styling */
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(255, 133, 162, 0.4);
+    
+    /* Smooth transitions */
+    transition: 
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #ff6087; /* Darker pink on hover */
+    transform: scale(1.1) rotate(90deg); /* Grows and rotates for a cool effect */
+    box-shadow: 0 12px 30px rgba(255, 133, 162, 0.6);
+}
+
+.add-btn:active {
+    transform: scale(0.9); /* Sinks in slightly when clicked */
+}

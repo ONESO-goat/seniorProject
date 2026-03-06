@@ -1,3 +1,5 @@
+/*about_me.css*/
+
 .my_photo {
     width: 60vw;
     max-width: 700px;
@@ -12,9 +14,47 @@
 
     overflow: hidden;   /* ⬅ IMPORTANT */
 }
-.m{
+/* Container to hold both the head and the hat */
+.m {
     justify-content: center;
     display: flex;
+    padding-top: 100px; /* Gives space for the hat to stick up */
+}
+
+.photo-container {
+    position: relative; /* This is the "anchor" for the hat */
+    display: inline-block;
+}
+
+.hat {
+    position: absolute;
+    top: -220px;    
+    left: 50%;      
+    transform: translateX(-50%) rotate(-5deg); 
+    width: 700px;    
+    /* -------------------------------------------- */
+    
+    z-index: 10;      /* Ensures hat stays on top of the photo */
+    pointer-events: none; /* Allows you to still click the photo under the hat */
+}
+
+.hat img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); /* Adds a realistic shadow on your head */
+}
+
+.my_photo {
+    width: 60vw;
+    max-width: 700px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow: -3px 8px 20px rgba(0, 0, 0, 0.8);
 }
 .my_photo img {
     width: 100%;

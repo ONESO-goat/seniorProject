@@ -1,0 +1,10 @@
+.welcome_box{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.welcome_text{
+    font-size: 250px;
+
+}

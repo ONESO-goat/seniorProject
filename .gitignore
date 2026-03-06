@@ -1,8 +1,15 @@
 /.vscode/
 /app
 *.py
+*.gitignore
 test.html
 dashboard.html
 styles.html
+/instance
 a.out
+test.js
 *.cpp
+canva_singup.png
+coding_cover.jpg
+signup.html
+key.e

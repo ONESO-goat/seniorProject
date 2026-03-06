@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+}
+
+.makers{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.data{
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+    color: white;
+}

@@ -1,0 +1,163 @@
+/*sign_up_log_in.css*/
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F91%2F07%2F67%2F91076763d51245294d208a33d562a30c.gif&f=1&nofb=1&ipt=99a1297f8a4229d6d653059b2ee2d4894de5f10c05315007cb03b73f2a962769') center/cover no-repeat; /* Replace with your bg */
+    background-color: #f4f7f6; 
+    height: 100vh;
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+    a:visited {
+        color: #ffffff; /* Use the same color as the default state */
+    }
+
+    /* Optional: Style for when a link is actively being clicked */
+    a:active {
+        color: #ffffff; /* Change color when active (e.g., blue) */
+    }
+/* Top Navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    align-items: center;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-right: 15px;
+    font-weight: 600;
+}
+
+.nav-input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+.login-submit {
+    background-color: #82d45e; /*e24acb*/
+    color: white; 
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Layout Container */
+.hero-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    height: 80vh;
+    padding: 0 10%;
+}
+
+/* The White Card */
+.signup-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.logo { width: 80px; margin-bottom: 20px; }
+
+.option-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    background: white;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.option-btn:hover {
+    background: #f9f9f9;
+    border-color: #00c2cb;
+}
+
+/* Typography */
+.hero-text {
+    color: white;
+    max-width: 500px;
+}
+.qoute{
+    color: black;
+}
+.hero-text h1 { font-size: 2.5rem; line-height: 1.2; }
+
+.terms { font-size: 12px; color: #666; margin-top: 20px; }
+.terms a { color: #00c2cb; text-decoration: none; }
+
+
+
+/* Container to hold the halo anchor */
+.halo-container {
+    position: relative;
+    display: inline-block;
+}
+
+.login-submit {
+    background-color: #82d45e; /* Your green */
+    color: white; 
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2; /* Sits above the halo */
+    transition: all 0.3s ease;
+}
+
+/* The Halo Ring */
+.halo-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); /* Start hidden behind button */
+    
+    /* Create an oval ring */
+    width: 45px;
+    height: 15px;
+    border: 3px solid #ffd700; /* Gold color */
+    border-radius: 50%;
+    
+    /* The Glow Effect */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 
+                inset 0 0 5px rgba(255, 215, 0, 0.4);
+    
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+
+/* --- THE HOVER EFFECT --- */
+.halo-container:hover::before {
+    opacity: 1;
+    /* Floats up above the button */
+    transform: translate(-50%, -35px) scale(1.1); 
+}
+
+.login-submit:hover {
+    background-color: #96e672;
+    transform: translateY(2px); /* Slight sink to emphasize the halo floating up */
+    box-shadow: 0 4px 15px rgba(130, 212, 94, 0.3);
+}

@@ -1,0 +1,37 @@
+/*footer.css*/
+
+.recap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: rgb(243, 241, 241);
+    height: 90px;
+    margin-top: 80px;
+}
+
+
+
+.links {
+    font-size: 18px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.recap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: rgb(243, 241, 241);
+    height: 90px;
+    margin-top: 80px;
+}
+
+
+
+.user-links {
+    font-size: 18px;
+    text-decoration: none;
+    color: inherit;
+}

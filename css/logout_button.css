@@ -1,0 +1,65 @@
+.logout {
+    position: relative; /* Anchor for the horns */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* We removed the 50px margin that was pushing the header down */
+    margin: 0 10px; 
+}
+
+.logout button {
+    padding: 10px 22px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    background-color: #e24acb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    z-index: 5; /* Sit firmly above the horns */
+    transition: all 0.3s ease;
+}
+
+/* Common Styles for Horns */
+.logout::before,
+.logout::after {
+    content: '';
+    position: absolute;
+    top: 0; /* Start at the top edge of the button */
+    width: 16px;
+    height: 32px;
+    background-color: #ff85a2;
+    z-index: 1; /* Sit behind the button */
+    opacity: 0;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none; /* So the horns don't block mouse clicks */
+}
+
+/* Positioning the Horns based on the button center */
+.logout::before {
+    left: 15%; 
+    transform: rotate(-40deg) translateY(10px) scale(0);
+}
+
+.logout::after {
+    right: 15%;
+    transform: rotate(40deg) translateY(10px) scale(0);
+}
+
+/* --- HOVER EFFECT --- */
+.logout:hover::before {
+    opacity: 1;
+    transform: rotate(-25deg) translateY(-28px) scale(1); /* Slide UP, not OUT */
+}
+
+.logout:hover::after {
+    opacity: 1;
+    transform: rotate(25deg) translateY(-28px) scale(1); /* Slide UP, not OUT */
+}
+
+.logout:hover button {
+    background-color: #ff6087;
+    box-shadow: 0 5px 15px rgba(255, 96, 135, 0.3);
+}

@@ -1,0 +1,41 @@
+.song_cover {
+    position: relative;
+}
+
+/* quote overlay */
+.quote_overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 20px;
+
+    font-size: 18px;
+    line-height: 1.4;
+    font-style: italic;
+
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.song_item:hover img {
+    filter: brightness(0.7);
+}
+
+.center .quote_overlay {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/* reveal on hover */
+.song_item:hover .quote_overlay {
+    opacity: 1;
+}

@@ -1,0 +1,153 @@
+
+/*frontpage.css*/
+
+
+:root {
+    --bg-color: #f0f2f5;
+    --sidebar-color: #ffffff;
+    --accent: #e24acb;
+    --text-main: #2d3436;
+    --text-light: #b2bec3;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling - Concept Style */
+.sidebar {
+    width: 240px;
+    background: var(--sidebar-color);
+    padding: 30px 20px;
+    position: fixed;
+    height: 100vh;
+    border-right: 1px solid #e1e4e8;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 40px;
+    padding-left: 15px;
+}
+
+.nav-item {
+    display: block;
+    padding: 12px 15px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: 0.2s;
+    margin-bottom: 5px;
+}
+
+.nav-item.active, .nav-item:hover {
+    background: #f0f7ff;
+    color: var(--accent);
+}
+
+.sidebar-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    margin: 25px 0 10px 15px;
+}
+
+/* Main Area */
+.content-area {
+    margin-left: 240px; /* Space for fixed sidebar */
+    flex: 1;
+    padding: 30px 50px;
+}
+/*FIRST*/
+.main-header {
+    display: flex;
+    justify-content: space-between; /* This pushes search to the left and logout to the right automatically */
+    align-items: center;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.search-bar-wrapper {
+    flex-grow: 1; /* Let the search take up the middle space */
+}
+.search-input {
+    width: 350px;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: none;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logout {
+    margin-left: 20px;
+}
+/* Profile Cards - Floating Effect */
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.card-cover {
+    height: 80px;
+    background-color: var(--accent);
+    background-size: cover;
+}
+
+.card-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid white;
+    margin-top: -40px; /* Overlap with cover image */
+    background: white;
+}
+
+.card-content {
+    padding: 15px 20px 25px;
+}
+
+.card-content h3 { margin: 10px 0 5px; font-size: 18px; }
+.card-content p { color: var(--text-light); font-size: 14px; margin-bottom: 15px; }
+
+/* --- THE HOVER EFFECT --- */
+.profile-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+
+
+.sidebar_profile{
+    width: 20px;
+    size: 10px;
+    border-radius: 50px;
+}
+
+.profile{
+    width: 100px;
+    border-radius: 50px;
+}

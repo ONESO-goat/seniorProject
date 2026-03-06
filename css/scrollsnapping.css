@@ -12,15 +12,6 @@ html, body {
 }
 
 .snap {
-    height: 100vh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    padding: 4rem;
-    box-sizing: border-box;
 }
