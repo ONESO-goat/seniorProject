@@ -1,5 +1,5 @@
 
-
+<!--new_page_music.html-->
 
 
 <!DOCTYPE html>
@@ -33,13 +33,16 @@
 
 <header class="introduction">
         <div class="title">
-           <h1 class="user_music_title">header</h1>
-        
+           <h1 class="user_music_title"></h1>
+            <textarea class="edit-input-field" id="header-textarea"  style="display: none;"></textarea>
+            <p class="modal-message" id="error-check"></p>
         </div>
-         <div class="mini_description">
-            <p>
-                text
-            </p>
+        
+         <div class="mini_description" style="align-items: center;">
+            <p id="mini_description_text"></p></p>
+            <p class="modal-message" id="error-check"></p>
+            <textarea class="edit-input-field" id="text-textarea"  style="display: none;"></textarea>
+            
         </div>
 </header>
 
@@ -76,18 +79,6 @@
 </div>-->
 
 <div class="three_songs_per_row">
-
-<div class="song_item">
-    <div class="song_cover">
-        <a target="_blank">
-            <img src="../images/buttercup.jpg">
-        </a>
-    </div>
-    
-        <audio class="preview-audio"></audio>
-    
-    <div class="song_title">Oneso, You So Mean!</div>
-</div>
 
 </div>
 
@@ -144,14 +135,12 @@
 
 
                 <footer for="the_links" class="recap">
-                    <a class="links">cylean34@gmail.com</a> 
-                    <a class="links" href="https://github.com/ONESO-goat" target="_blank">github</a>
-                    <a class="links" href="http://127.0.0.1:5500/article1.html">LinkedIn</a>
-
+                    <a class="links"></a> 
                 </footer>
     <!--<script src="../js/audioPreview"></script>-->
     <script type='module' src="../js/add_subcard.js"></script>
     <script  type="module" src="../js/modalSubcard.js"></script>
+    <script  type="module" src="../js/edit_subcard.js"></script>
     
     
 

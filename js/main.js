@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if (data.MESSAGE) {
-                
+                localStorage.clear();
                 window.location.href = "../login_signin/index.html";
             } else if (data.ERROR) {
                 alert("logout failed: " + data.ERROR);

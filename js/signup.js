@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- STEP 2: Role button click — reveal the form ---
     roleButtons.forEach((button) => {
         button.addEventListener("click", () => {
-
+            
             // Remove the "active" highlight from all buttons first
             roleButtons.forEach(btn => btn.style.borderColor = "");
 
@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             formMessage.textContent = "Password must be at least 8 characters.";
             return;
         }
+    const possibleUserChoice = localStorage.getItem("pf_userChoice");
 
  // --- STEP 4: Send to Flask (Updated for Debugging) ---
 fetch("http://127.0.0.1:5000/auth/signup", {
@@ -80,7 +81,7 @@ fetch("http://127.0.0.1:5000/auth/signup", {
         username: username,
         email: signup_email,
         password: password,
-        role: selectedRole
+        role: possibleUserChoice ? possibleUserChoice : selectedRole
     })
 })
 .then(async (response) => {

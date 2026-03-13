@@ -137,11 +137,11 @@ submitBtn.addEventListener("click", async () => {
             // true = success = green text
             const shortId = data.ID; 
             console.log(`SHORTID: ${shortId}`);
-            localStorage.setItem("pf_CardDescription", description);
+            localStorage.setItem("pf_justCreatedCard", "true"); // ✅ set the flag
             localStorage.setItem("pf_CardTitle", title);
+            localStorage.setItem("pf_CardDescription", description);
             localStorage.setItem("pf_CardCategory", category);
-            localStorage.setItem("pf_CardShortId", shortId);
-            
+            localStorage.setItem("pf_CardShortId", data.ID);
             setTimeout(() => {
                 addingCard(title, description, category, data.ID);
                 closeModal();

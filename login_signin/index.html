@@ -2,8 +2,9 @@
 <html>
 <head>
     <title>PanthoFlow - login</title>
+    
     <link rel="stylesheet" href="../css/sign_up_log_in.css">
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap.css" rel="stylesheet">
+   <!--<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap.css" rel="stylesheet">-->
     
 </head>
 <body>
@@ -31,9 +32,9 @@
             <p class="subtitle">Get the best experience by telling us what you need:</p>
             
             <div class="option-list">
-                <button class="option-btn">Education (teacher or student)</button>
-                <button class="option-btn">Small business (startup, blog)</button>
-                <button class="option-btn">Personal (home, family)</button>
+                <button class="option-btn" data-role="Education">Education (teacher or student)</button>
+                <button class="option-btn" data-role="Business">Small business (startup, blog)</button>
+                <button class="option-btn" data-role="Personal">Personal (home, family)</button>
             </div>
 
             <p class="terms">By signing up, you agree to PanthoFlow's<br><a href="#">Terms & Conditions</a></p>
@@ -47,6 +48,7 @@
             </blockquote>
         </div>
     </main>
-    <script type='module' src="../js/auth.js" defer></script>
+    <script src="../js/auth.js"></script>
+    <script src="../login_signin/loginRoles.js"></script>
 </body>
 </html>

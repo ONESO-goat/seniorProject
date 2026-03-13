@@ -79,16 +79,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         p("Could not fetch cards from server:", error);
     }
 
-    // Step 2 — fallback: if Flask had nothing or failed, check localStorage
-    // This handles the case right after creation before a page reload
-    const title    = localStorage.getItem("pf_CardTitle");
-    const des      = localStorage.getItem("pf_CardDescription");
-    const category = localStorage.getItem("pf_CardCategory");
-    const sId      = localStorage.getItem("pf_CardShortId");
-
-    if (title && category && sId) {
-        addingCard(title, des, category, sId);
-        p("Card loaded from localStorage fallback.");
-    }
+     const justCreated = localStorage.getItem("pf_justCreatedCard");
+    if (justCreated) {
+        const title    = localStorage.getItem("pf_CardTitle");
+        const des      = localStorage.getItem("pf_CardDescription");
+        const category = localStorage.getItem("pf_CardCategory");
+        const sId      = localStorage.getItem("pf_CardShortId");
+        if (title && category && sId) {
+            addingCard(title, des, category, sId);
+        }
+        localStorage.removeItem("pf_justCreatedCard");
     lucide.createIcons();
-});
+}});

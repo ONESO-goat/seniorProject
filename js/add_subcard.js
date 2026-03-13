@@ -57,13 +57,13 @@ function htmlStructure(data){
     html =  `
 <div class="song_item">
     <div class="song_cover">
-        <div class='category'>${category}</div>
-        <a href='${platform}' target="_blank">
-            <img src="${image}">
+        <div class='category' style='display: none;'>${category}</div>
+        <a ${platform ? `href="${platform}"` : ''}>
+            <img ${`src="${image}"` ? image : ''}>
         </a>
     </div>
     
-        <audio class="preview-audio" src="${audio}"></audio>
+        <audio class="preview-audio" ${`src="${audio}"` ? audio : ''}></audio>
     
     <div class="song_title">${title}</div>
 </div>
@@ -71,9 +71,9 @@ function htmlStructure(data){
     html =  `
 <div class="song_item">
     <div class="song_cover">
-        <div class='category'>${category}</div>
+        <div class='category' style='display: none;>${category}</div>
         <a href='../html/article_template.html' target="_blank">
-            <img src="${image}">
+            <img ${`src="${image}"` ? image : ''}>
         </a>
     </div>
     
@@ -84,14 +84,14 @@ function htmlStructure(data){
     html =  `
 <div class="song_item">
     <div class="song_cover">
-        <div class='category'>${category}</div>
-        <a href='${platform}' target="_blank">
-            <img src="${image}">
+        <div class='category' style='display: none;'>${category}</div>
+        <a ${platform ? `href="${platform}"` : ''}>
+            <img ${`src="${image}"` ? image : ''}>
         </a>
         <div class="quote_overlay">${description}</div>
     </div>
     
-        <audio class="preview-audio" src="${audio}"></audio>
+        <audio class="preview-audio" ${`src="${audio}"` ? audio : ''}></audio>
     
     <div class="song_title">${title}</div>
 </div>
@@ -99,6 +99,19 @@ function htmlStructure(data){
 }
 return html;
 }
+
+
+function addHeaderMiniText(header, miniText){
+    debug("INSIDE addHeaderMiniText")
+    const AddHeader = document.querySelector(".user_music_title");
+    const AddMiniText = document.getElementById("mini_description_text");
+    if (!AddHeader || !AddMiniText){
+        console.error("Header and MiniText missing");
+    }
+    AddHeader.textContent = header;
+    AddMiniText.textContent = miniText;
+}
+
 
 export async function loadCardById(shortId){
     try{
@@ -111,7 +124,11 @@ export async function loadCardById(shortId){
         if (response.ok && data.MESSAGE){
         
             const u = data.CARDS;
-            console.log(u);
+            
+            const home = data.HOME;
+            debug("HOME");
+            debug(home);
+        
 
             if (data.OWNER === false){
             const editBtn = document.querySelector(".edit-btn");
@@ -119,6 +136,7 @@ export async function loadCardById(shortId){
             if (editBtn) editBtn.style.display = 'none';
             if (addBtn) addBtn.style.display = 'none';
         }
+            addHeaderMiniText(home.header, home.miniText);
 
             for (var i = 0; i < u.length; i++){
                 const current_subCard = u[i];
@@ -174,13 +192,22 @@ document.addEventListener("DOMContentLoaded", async () =>{
     const data = await response.json();
     if (response.ok && data.MESSAGE){
         const cards = data.CARD;
+        const home = data.HOME;
+        debug("HOME");
+        debug(home);
+       
+
+        addHeaderMiniText(home.header, home.miniText);
         for (var i = 0; i < cards.length; i++){
             const c = cards[i];
             addSubcard(c.title, 
                         c.category, 
                         c.image,
-                        c.platform)
+                        c.platform);
         }
     }}
+
+
+    lucide.createIcons();
 
 })
