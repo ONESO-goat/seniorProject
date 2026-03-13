@@ -119,3 +119,15 @@
     text-decoration: none;
     color: inherit;
 }
+
+.edit-input-field {
+    width: 100%;
+    min-height: 100px;
+    font-family: inherit;
+    font-size: inherit;
+    border: 2px solid #ff85a2; /* Matches your edit button color */
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+    resize: vertical;
+}

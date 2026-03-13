@@ -25,13 +25,17 @@
             <a href="#" class="nav-item">Design Group</a>
             <a href="#" class="nav-item">UI/UX Daily</a>
         </nav>
-        <div class="sidebar-label">Favorites</div>
+        <!--<div class="sidebar-label">Favorites</div>-->
         <nav class="nav-menu">
             <!-- <a href="#" class="nav-item">Placeholder</a> -->
         </nav>
 
-        <div class="sidebar_profile">
-            <a><img class='profile'></a>
+        <div class="sidebar_profile" style="align-items: center; 
+                                            padding: auto;
+                                            border: 1px solid black;
+                                            height: 50px;
+                                            width: 50px;">
+            <a href="../html/template.html" style="align-items: center;"><img class='profile' id="pfp-icon"></a>
         </div>
 
     </aside>
@@ -39,7 +43,7 @@
     <main class="content-area">
         <header class="main-header">
             <div class="search-bar-wrapper">
-                <input type="text" class="search-input" placeholder="Search people, projects...">
+                <input type="text" class="search-input" placeholder="Search people, schools...">
             </div>
             <div class="logout">
                 <button>Logout</button>
@@ -50,9 +54,27 @@
             <h1>Discovery</h1>
         </div>
 
+         <section class="user-grid" id="user-section">
+            <a href="../html/my_page.html" class="profile-card color-override">
+                <div class="card-cover"></div>
+                <div class="card-content">
+                    <img src="../images/betterPantho.png" class="card-avatar">
+                    <h3>Julius Cylien</h3>
+                    <p>Digital God</p>
+                    <div class="card-stats">
+                        <span><strong id="follower-count">206M</strong> followers</span>
+                    </div>
+                </div>
+            </a>
+
+
+            
+            </section>
+
         
     </main>
     <script src="../js/main.js"></script>
+    <script src="../js/add_users_to_screen.js"></script>
 </div>
 
 </body>

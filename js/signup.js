@@ -45,7 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         // Read what the user typed
         const username = usernameInput.value.trim();
-        const email = emailInput.value.trim();
+        let signup_email = emailInput.value.trim();
+        if (!signup_email){
+            signup_email = '';
+        }
         const password = passwordInput.value.trim();
 
         // Clear any previous message
@@ -68,67 +71,62 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // --- STEP 4: Send to Flask ---
-        fetch("http://127.0.0.1:5000/auth/signup", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password,
-                role: selectedRole
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(" ============ [DEBUG] FULL SERVER RESPONSE:", data, "=============");
-            if (data.MESSAGE) {
-                // Success — show green message then redirect
-                formMessage.textContent = "Account created! Redirecting...";
+ // --- STEP 4: Send to Flask (Updated for Debugging) ---
+fetch("http://127.0.0.1:5000/auth/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({
+        username: username,
+        email: signup_email,
+        password: password,
+        role: selectedRole
+    })
+})
+.then(async (response) => {
+    // 1. Capture the status and 'ok' before we turn it into JSON
+    const statusCode = response.status;
+    const isOk = response.ok;
+    const data = await response.json();
 
-                formMessage.classList.add("success");
+    if (isOk && data.MESSAGE) {
+        // Success Logic
+        formMessage.textContent = "Account created! Redirecting...";
+        formMessage.classList.add("success");
 
-                localStorage.setItem("pf_username", data.DETAILS.username);
-                localStorage.setItem("pf_shortid", data.DETAILS.shortId);
-                localStorage.setItem("pf_email",   data.DETAILS.email);
-                localStorage.setItem("pf_role",    data.DETAILS.role);
 
-                console.log(response.status);
-                console.log(response.ok);
-                console.log(response.status);
-                console.log(response.ok);
-                
-                setTimeout(async () => { // Added async in case you need to parse response.json()
-    console.log("Status Code:", response.status);
-    console.log("Response OK:", response.ok);
+        // Store data
+        localStorage.setItem("pf_username", data.DETAILS.username);
+        localStorage.setItem("pf_shortid", data.DETAILS.shortId);
+        localStorage.setItem("pf_email",   data.DETAILS.email);
+        localStorage.setItem("pf_role",    data.DETAILS.role);
 
-    if (response.ok) {
-        console.log("Redirecting to template...");
-        window.location.href = "../html/template.html";
-    } else {
-        // This is the most important part for debugging!
-        const errorText = await response.text(); 
-        console.error(`Redirect failed. Server said: ${response.status} - ${errorText}`);
         
-        // Optional: Alert yourself so you don't miss it in the console
-        alert("Sign-up failed! Check the console for details.");
+        setTimeout(() => {
+            
+            window.location.href = "../html/template.html";
+        }, 1);
+
+    } else {
+        // Error Logic
+        formMessage.classList.remove("success");
+        formMessage.textContent = data.ERROR || "Unknown error occurred.";
+        console.error(`Sign-up failed. Server said: ${statusCode}`, data);
     }
-}, 1200);
-
-
-
-            } else if (data.ERROR) {
-                // Show Flask's error message in red
-                formMessage.textContent = data.ERROR;
-            }
-        })
-        .catch(error => {
-            formMessage.textContent = "Could not reach server. Is Flask running?";
-            console.error(error);
-        });
+})
+.catch(error => {
+    formMessage.textContent = "Could not reach server. Is Flask running?";
+    console.error("Fetch Error:", error);
+});
     });
     
 });
 
 
+
+
+
+
+function debug(s){
+    console.log(`[DEBUG] ${s}\n`)
+}

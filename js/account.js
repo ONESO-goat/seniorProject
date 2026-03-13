@@ -1,53 +1,64 @@
 // accounts.js
 import {p, debug} from './utils.js';
 
+import './cards.js';
+
 var step = 0;
 
-export function createUserCardbase(username, id, email, role) {
-    p(" ============= Inside CreateCardBase ====================");
+export function createUserCardbase(username, 
+                                    id, 
+                                    email, 
+                                    role) {
+   
     debug(username);
     debug(id);
     debug(role);
     if (!username || !id || !role) {
-        p("Didnt pass username or id check.")
+        p("Didnt pass username or id check.");
         return;
     }
-    p("Passes username and ID check.");
+
 
     const nameTemplate = document.querySelector(".the_user");
     
-    const recap = document.querySelector("recap");  
+    const action_word = document.querySelector(".My_title");
+
+    const current_user_des = document.getElementById('template-description');
+
+    const recap = document.querySelector(".recap"); 
+    
     
     const cardDescription = document.querySelector(".main_description_of_section");
     
     const boxName = document.querySelector(".name_of_boxes");
     
     document.title = `PanthoFlow - ${username}`;
-    p("New document title set and evverythign else above set.");
+    
     if (nameTemplate) {
         nameTemplate.textContent = username;
-        debug("nameTemplate set ✓");
+        
     }
     
     if (recap) {
-        debug("recap set ✓");
+       
         if (email){
         const emailLink = recap.querySelector(".user-links");
         emailLink.textContent = email;
-        p("email set ✓")
+       
 
         } 
         if (id){
-            p("id found ✓")
+           
             const idBox = recap.querySelector(".user-id");
             idBox.textContent = id;
-            p("id set ✓")
+           
         }
 
     }
 
+
     if (cardDescription && boxName){
-        p("DOUBLE CHECKS SET ✓")
+        
         if (role == 'Business'){
         boxName.innerHTML = '<h1>My Work</h1>'
         cardDescription.innerHTML = 'Come see my best work!';
@@ -64,20 +75,14 @@ export function createUserCardbase(username, id, email, role) {
         cardDescription.innerHTML = "Come see what I've been working on!";}
     }
 
+
         
-    debug("Creating about me ✓");
-    createAboutme(username);
-    debug("about me set ✓");
+    
+    localStorage.setItem("pf_username", username);
+    
 }
 
-export function createAboutme(username) {
-    const name = capitalizeName(username);
-    p("INSIDE ABOUIT ME AND NAME SET")
-    const Hi = document.querySelector(".more_of_me");
-    if (Hi) {
-        Hi.innerHTML = `<p>Hi, my name is ${name}!</p>`;
-    }
-}
+
 
 export function capitalizeName(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
@@ -87,6 +92,19 @@ export function capitalizeName(name) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    debug(`PARAMS ${params}`);
+
+
+    const viewingUserId = params.get("user");
+
+    debug(`ID FOR VIEWING ${viewingUserId}`);
+
+    if (viewingUserId){
+        debug("VIEWING USER ID STARTED")
+        loadUserById(viewingUserId);
+        return;
+    } else{
     const username = localStorage.getItem("pf_username");
     const shortid  = localStorage.getItem("pf_shortid");
     const email    = localStorage.getItem("pf_email");
@@ -98,4 +116,118 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     createUserCardbase(username, shortid, email, role);
-});
+    
+    lucide.createIcons();
+}});
+
+async function loadUserById(shortId){
+    try{
+        const response = await fetch(`http://127.0.0.1:5000/user/get/${shortId}`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: { "Content-Type": 'application/type' }
+        });
+        const data = await response.json();
+        if (response.ok && data.MESSAGE){
+        
+            const u = data.USER;
+            console.log(u);
+
+            debug(u.username);
+            debug(u.shortId);
+            debug(u.email);
+
+            if (data.OWNER === false){
+ 
+                const editBtn = document.querySelector(".edit-btn");
+                const addBtn = document.querySelector(".add-btn");
+                if (editBtn) editBtn.style.display = 'none';
+                if (addBtn) addBtn.style.display = 'none';
+        }
+
+            const test = u['action_word'];
+            debug(`test['action_word'] ${test}`)
+            
+            createExistingUserCardbase(u.username, 
+                               shortId, 
+                               u.email, 
+                               u.role, 
+                               test, 
+                               u.page_description);
+        } 
+        else {
+            console.error(("User not found:", data.ERROR));
+        }
+    } catch (e){
+        console.error("Failed to load user:", e);
+    }
+}
+
+
+
+export function createExistingUserCardbase(
+                                    sp_username, 
+                                    sp_id, 
+                                    sp_email, 
+                                    sp_role, 
+                                    chosen_action_word, 
+                                    sp_des) {
+   
+    debug(sp_username);
+    debug(sp_id);
+    debug(sp_role);
+    if (!sp_username || !sp_id || !sp_role) {
+        p("Didnt pass username or id check.");
+        return;
+    }
+
+
+    const nameTemplate = document.querySelector(".the_user");
+    
+    const user_action_word = document.querySelector(".My_title");
+
+    const _user_des = document.getElementById('template-description');
+
+    const recap = document.querySelector(".recap"); 
+    
+    
+    const cardDescription = document.querySelector(".main_description_of_section");
+    
+    const boxName = document.querySelector(".name_of_boxes");
+    
+    document.title = `PanthoFlow - ${sp_username}`;
+    
+    if (nameTemplate) {
+        nameTemplate.textContent = sp_username.toUpperCase();
+        
+    }
+    
+    if (recap) {
+       
+        if (sp_email){
+        const emailLink = recap.querySelector(".user-links");
+        emailLink.textContent = sp_email;
+       
+
+        } 
+        if (sp_id){
+           
+            const idBox = recap.querySelector(".user-id");
+            idBox.textContent = sp_id;
+           
+        }
+
+    }
+    debug(`ACTION AND DES CHECK; ACTION: ${chosen_action_word}, DESCRIPTION: ${sp_des}`);
+    if (user_action_word){
+        debug("ACTION WORD FOUND");
+        user_action_word.innerHTML = chosen_action_word;
+    } 
+    if (_user_des){
+        debug("DESCRIPTION FOUND");
+        _user_des.innerHTML = sp_des;
+    }     
+    
+    localStorage.setItem("pf_username", sp_username);
+    
+}

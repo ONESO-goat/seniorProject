@@ -1,5 +1,11 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const logoutButton = document.querySelector(".logout");
+    const pfp = document.getElementById('user-logo');
+    const init = localStorage.getItem('pf_username');
+    if (pfp){
+        pfp.textContent = init[0];
+    }
 
     logoutButton.addEventListener("click", ()=>{
         fetch("http://127.0.0.1:5000/auth/logout", {

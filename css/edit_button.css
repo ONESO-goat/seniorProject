@@ -1,0 +1,50 @@
+/* edit_button.css */
+
+.edit-btn {
+    /* Positioning - Adjust these to place it near your add-btn */
+    position: fixed; 
+    bottom: 20px;
+    right: 80px; /* Offset so it doesn't overlap the '+' button */
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #6366f1; 
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* The Scribble Animation */
+@keyframes scribble {
+    0% { transform: rotate(0deg) translate(0, 0); }
+    25% { transform: rotate(-12deg) translate(-1px, -1px); }
+    50% { transform: rotate(18deg) translate(1px, 0px); }
+    75% { transform: rotate(-8deg) translate(-1px, 1px); }
+    100% { transform: rotate(0deg) translate(0, 0); }
+}
+
+.edit-btn:hover {
+    background-color: #4f46e5;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* Triggers the shake on the icon specifically */
+.edit-btn:hover .pencil-icon {
+    animation: scribble 0.25s ease-in-out infinite;
+}
+
+.pencil-icon {
+    width: 18px;
+    height: 18px;
+    /* Ensure the icon rotates from the "tip" of the pencil */
+    transform-origin: bottom left; 
+}

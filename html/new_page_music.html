@@ -1,0 +1,159 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link rel="stylesheet" href="../css/section_pages.css">
+        <link rel="stylesheet" href="../css/button.css">
+        <link rel="stylesheet" href="../css/add_button.css">
+        <link rel="stylesheet" href="../css/edit_button.css">
+        <link rel="stylesheet" href="../css/modal.css">
+
+
+    </head>
+
+    <body>
+             <button class="back-btn" onclick="history.back()">
+                <span class="arrow"></span>
+                Back
+            </button>
+
+
+<button class="add-btn" title="Create New Project">+</button>
+        
+        <button class="edit-btn" style="background-color: #ff85a2;">
+            <i data-lucide="pencil" class="pencil-icon"></i>
+            <span id="edit-btn-text">Edit</span>
+        </button>
+
+<header class="introduction">
+        <div class="title">
+           <h1 class="user_music_title">header</h1>
+        
+        </div>
+         <div class="mini_description">
+            <p>
+                text
+            </p>
+        </div>
+</header>
+
+
+
+<!--<div class="song_collections">
+    <div class="my_best_work">
+
+<div class="song_item">
+    <div class="song_cover">
+        <a href=""><img src="../images/startofussong.jpg"></a>
+    </div>
+
+    <div class="song_title">The Start Of Us <br>(coming soon)</div>
+</div>
+
+<div class="song_item">
+    <div class="song_cover">
+        <a href=""><img src="../images/worththetry.jpg"></a>
+    </div>
+
+    <div class="song_title">Worth The Try <br>(coming soon)</div>
+</div>
+
+<div class="song_item">
+    <div class="song_cover">
+        <a href=""><img src="../images/robot.jpg"></a>
+    </div>
+
+    <div class="song_title">Getting Too Blind <span>[Freestyle]</span><br>(coming soon)</div>
+</div>
+
+    </div>
+</div>-->
+
+<div class="three_songs_per_row">
+
+<div class="song_item">
+    <div class="song_cover">
+        <a target="_blank">
+            <img src="../images/buttercup.jpg">
+        </a>
+    </div>
+    
+        <audio class="preview-audio"></audio>
+    
+    <div class="song_title">Oneso, You So Mean!</div>
+</div>
+
+</div>
+
+
+
+<div class="modal-overlay" id="subcard-modal">
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <h2>New Song</h2>
+            <button class="modal-close" id="modal-close">✕</button>
+        </div>
+
+        <label class="modal-label">Title</label>
+        <input 
+            type="text" 
+            class="modal-input" 
+            id="card-title" 
+            placeholder="e.g. Sunflower"
+            maxlength="60"
+        >
+
+        <label class="modal-label">Genre</label>
+        <select class="modal-input" id="card-category">
+            <option value="" disabled selected>Choose a genre...</option>
+            <option value="hip-hop">Hip-Hop</option>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+            <option value="indie">Indie</option>
+            <option value="dance">Dance</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label class="modal-label">Link</label>
+        <textarea 
+            class="modal-input modal-textarea" 
+            id="card-description" 
+            placeholder="Link to song"
+            maxlength="200"
+        ></textarea>
+
+        <p class="modal-message" id="modal-message"></p>
+
+        <div class="modal-actions">
+            <button class="modal-cancel" id="modal-cancel">Cancel</button>
+            <button class="modal-submit" id="modal-submit">Add Song</button>
+        </div>
+
+    </div>
+</div>
+        
+
+
+
+
+                <footer for="the_links" class="recap">
+                    <a class="links">cylean34@gmail.com</a> 
+                    <a class="links" href="https://github.com/ONESO-goat" target="_blank">github</a>
+                    <a class="links" href="http://127.0.0.1:5500/article1.html">LinkedIn</a>
+
+                </footer>
+    <!--<script src="../js/audioPreview"></script>-->
+    <script type='module' src="../js/add_subcard.js"></script>
+    <script  type="module" src="../js/modalSubcard.js"></script>
+    
+    
+
+    </body>
+</html>
