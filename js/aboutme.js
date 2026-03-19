@@ -14,7 +14,35 @@ export function createAboutme(des) {
 document.addEventListener("DOMContentLoaded", async () => {
     //const username = localStorage.getItem("pf_username");
     //createAboutme(username);
+    const params = new URLSearchParams(window.location.search);
     const Hi = document.querySelector(".more_of_me");
+
+    const user = params.get("user");
+    if (user){
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/user/aboutme/get/${user}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await response.json();
+            if (data.MESSAGE) {
+                createAboutme(data.ABOUT);
+                if (!data.OWNER || data.OWNER === false){
+                    const editBtn = document.querySelector(".edit-btn");
+                    const addBtn = document.querySelector(".add-btn");
+                    if (editBtn) editBtn.style.display = 'none';
+                    if (addBtn) addBtn.style.display = 'none';
+                }
+            } else {
+                console.error("Error fetching about me: " + data.ERROR);
+            }
+        } catch (e) {
+            console.error("Fetch failed:", e);
+        }
+    } else{
+ 
+    
     if (Hi) {
         try {
             const response = await fetch("http://127.0.0.1:5000/user/aboutme/get", {
@@ -104,5 +132,5 @@ document.addEventListener("DOMContentLoaded", async () => {
             
         }
     });
-    lucide.createIcons();
-});
+   
+} lucide.createIcons();});

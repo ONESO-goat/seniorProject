@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pfp = document.getElementById('user-logo');
     const init = localStorage.getItem('pf_username');
     if (pfp){
-        pfp.textContent = init[0];
+        pfp.textContent = init;
     }
 
     logoutButton.addEventListener("click", ()=>{

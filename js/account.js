@@ -1,5 +1,6 @@
 // accounts.js
 import {p, debug} from './utils.js';
+import { addingCard } from './add_card.js';
 
 import './cards.js';
 
@@ -10,9 +11,7 @@ export function createUserCardbase(username,
                                     email, 
                                     role) {
    
-    debug(username);
-    debug(id);
-    debug(role);
+    
     if (!username || !id || !role) {
         p("Didnt pass username or id check.");
         return;
@@ -35,7 +34,7 @@ export function createUserCardbase(username,
     document.title = `PanthoFlow - ${username}`;
     
     if (nameTemplate) {
-        nameTemplate.textContent = username;
+        nameTemplate.textContent = capitalizeName(username);
         
     }
     
@@ -78,7 +77,7 @@ export function createUserCardbase(username,
 
         
     
-    localStorage.setItem("pf_username", username);
+    //localStorage.setItem("pf_username", username);
     
 }
 
@@ -93,23 +92,19 @@ export function capitalizeName(name) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
-    debug(`PARAMS ${params}`);
-
-
+   
     const viewingUserId = params.get("user");
 
-    debug(`ID FOR VIEWING ${viewingUserId}`);
-
+   
     if (viewingUserId){
-        debug("VIEWING USER ID STARTED")
+        
         loadUserById(viewingUserId);
-        return;
     } else{
     const username = localStorage.getItem("pf_username");
     const shortid  = localStorage.getItem("pf_shortid");
     const email    = localStorage.getItem("pf_email");
     const role     = localStorage.getItem("pf_role");
-
+   
     if (!username || !shortid) {
         window.location.href = "../login_signin/index.html";
         return;
@@ -131,22 +126,34 @@ async function loadUserById(shortId){
         if (response.ok && data.MESSAGE){
         
             const u = data.USER;
+
+            const aboutMe = u['about_me'];
+            const aboutMeArea = document.querySelector('.learn_more_section');
+            aboutMeArea.innerHTML = '';
+            aboutMeArea.innerHTML = `<a class="learn_more" href="../html/aboutme_template.html?user=${shortId}">More about me ></a>`;
+
+            const userCardsOnPage = data.CARDS;
+            const sections = document.querySelector(".different_sections");
+            sections.innerHTML = '';
             console.log(u);
 
-            debug(u.username);
-            debug(u.shortId);
-            debug(u.email);
-
             if (data.OWNER === false){
- 
+                
+                
                 const editBtn = document.querySelector(".edit-btn");
                 const addBtn = document.querySelector(".add-btn");
                 if (editBtn) editBtn.style.display = 'none';
                 if (addBtn) addBtn.style.display = 'none';
+
+                
+        } else{
+            const likeButton = document.getElementById("like-btn");
+            const followBtn = document.getElementById('follow-btn');
+            if (followBtn) followBtn.style.display = 'none';
+            if (likeButton) likeButton.style.display = 'none';
         }
 
             const test = u['action_word'];
-            debug(`test['action_word'] ${test}`)
             
             createExistingUserCardbase(u.username, 
                                shortId, 
@@ -154,6 +161,19 @@ async function loadUserById(shortId){
                                u.role, 
                                test, 
                                u.page_description);
+
+            
+            if (!userCardsOnPage){
+                console.error("User cards not seen on page.");
+            }
+            
+    
+            for (var i = 0; i<userCardsOnPage.length; i++){
+                const c = userCardsOnPage[i];
+                
+                addingCard(c.title, c.description, c.category, c.shortId, c.image);
+            }
+            
         } 
         else {
             console.error(("User not found:", data.ERROR));
@@ -173,9 +193,7 @@ export function createExistingUserCardbase(
                                     chosen_action_word, 
                                     sp_des) {
    
-    debug(sp_username);
-    debug(sp_id);
-    debug(sp_role);
+  
     if (!sp_username || !sp_id || !sp_role) {
         p("Didnt pass username or id check.");
         return;
@@ -198,7 +216,7 @@ export function createExistingUserCardbase(
     document.title = `PanthoFlow - ${sp_username}`;
     
     if (nameTemplate) {
-        nameTemplate.textContent = sp_username.toUpperCase();
+        nameTemplate.textContent = capitalizeName(sp_username);
         
     }
     
@@ -218,16 +236,77 @@ export function createExistingUserCardbase(
         }
 
     }
-    debug(`ACTION AND DES CHECK; ACTION: ${chosen_action_word}, DESCRIPTION: ${sp_des}`);
+   
     if (user_action_word){
-        debug("ACTION WORD FOUND");
+        user_action_word.innerHTML = '';
         user_action_word.innerHTML = chosen_action_word;
     } 
     if (_user_des){
-        debug("DESCRIPTION FOUND");
+        _user_des.innerHTML = '';
         _user_des.innerHTML = sp_des;
     }     
     
-    localStorage.setItem("pf_username", sp_username);
+   
     
+}
+
+
+
+
+
+
+
+
+
+
+function addUserCards(subcardTitle, subcardDescription, subcardCategory, links, ){
+    // links = {audio_link, platform_link, image_link, etc...}
+    const { image, platform, audio } = links;
+
+    var html;
+    if (category === 'music'){
+    html =  `
+<div class="song_item">
+    <div class="song_cover">
+        <div class='category' style='display: none;'>${category}</div>
+        <a ${platform ? `href="${platform}"` : ''}>
+            <img ${`src="${image}"` ? image : ''}>
+        </a>
+    </div>
+    
+        <audio class="preview-audio" ${`src="${audio}"` ? audio : ''}></audio>
+    
+    <div class="song_title">${title}</div>
+</div>
+`} else if (category === 'article'){
+    html =  `
+<div class="song_item">
+    <div class="song_cover">
+        <div class='category' style='display: none;>${category}</div>
+        <a href='../html/article_template.html' target="_blank">
+            <img ${`src="${image}"` ? image : ''}>
+        </a>
+    </div>
+    
+    <div class="song_title">${title}</div>
+</div>
+`
+}else {
+    html =  `
+<div class="song_item">
+    <div class="song_cover">
+        <div class='category' style='display: none;'>${category}</div>
+        <a ${platform ? `href="${platform}"` : ''}>
+            <img ${`src="${image}"` ? image : ''}>
+        </a>
+        <div class="quote_overlay">${description}</div>
+    </div>
+    
+        <audio class="preview-audio" ${`src="${audio}"` ? audio : ''}></audio>
+    
+    <div class="song_title">${title}</div>
+</div>
+`
+}
+return html;
 }

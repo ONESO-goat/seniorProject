@@ -4,11 +4,14 @@
 <html>
     <head>
         <title class='user-title'></title>
+        
         <link rel="stylesheet" href="../css/frontpageStyles.css">
         <link rel="stylesheet" href="../css/scrollsnapping.css">
         <link rel="stylesheet" href="../css/button.css">
         <link rel="stylesheet" href="../css/add_button.css">
         <link rel="stylesheet" href="../css/edit_button.css">
+        <link rel="stylesheet" href="../css/delete_button.css">
+        <link rel="stylesheet" href="../css/follow_button.css">
         <link rel="stylesheet" href="../css/modal.css">
         <link rel="icon" href="../images/betterPantho.png"type="image/x-icon">
         <link rel="stylesheet" href="../css/footer.css">
@@ -29,6 +32,11 @@
             <i data-lucide="pencil" class="pencil-icon"></i>
             <span id="edit-btn-text">Edit</span>
         </button>
+        <button class="follow-btn" id="follow-btn" title="Follow this user">
+            <svg class="star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+            </svg>
+        </button>
 
         <section class="snap intro">
         
@@ -37,18 +45,18 @@
         </header>
         <div class="user_title">
             <p class="My_title" id="action_word"></p>
-            <textarea class="edit-input-field" id="actionWord-textarea"  style="display: none;"></textarea>
+            <textarea class="edit-input-field" id="actionWord-textarea"  style="display: none; width: 250px; text-align: center;"></textarea>
         </div>
         </section>
 
         <section class="snap about">
         <div class="user_description">
             <p class="description_of_user" id="template-description"></p>
-            <textarea class="edit-input-field" id="description-textarea" style="display: none;"></textarea>
+            <textarea class="edit-input-field" id="description-textarea" style="display: none; justify-content: center; height: 300px; text-align: center;"></textarea>
         </div>
             <div class="learn_more_section">
                     <a class="learn_more" href="../html/aboutme_template.html">More about me ></a>
-        </div>
+            </div>
         </section>
 
 
@@ -133,6 +141,8 @@
 <script type="module" src="../js/add_card.js"></script>
 <script type="module" src="../js/account.js"></script>
 <script type="module" src="../js/edit_page.js"></script>
+<script type="module" src="../js/delete_card.js"></script>
+<script type="module" src="../js/follow.js"></script>
     </body>
 
 </html>

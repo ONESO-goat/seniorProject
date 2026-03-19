@@ -1,0 +1,31 @@
+/* The X button that appears on cards in edit mode */
+.card-delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s, transform 0.1s;
+    line-height: 1;
+}
+
+.card-delete-btn:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+
+/* Cards need position:relative so the X positions inside them */
+.card-item {
+    position: relative;
+}

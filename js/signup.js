@@ -46,9 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Read what the user typed
         const username = usernameInput.value.trim();
         let signup_email = emailInput.value.trim();
-        if (!signup_email){
-            signup_email = '';
-        }
+        
         const password = passwordInput.value.trim();
 
         // Clear any previous message

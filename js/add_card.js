@@ -4,11 +4,17 @@
 
 const p = console.log;
 const list_ = [];
+
 export function addingCard(title, description, category, id, image_link = null) {
-    if (!title || !category) return;
+    if (!title || !category) {p('TITLE OR CATEGORY NOT FOUND.'); return;}
+    p('insdie addingCard');
+    p("Title: " + title + ", description: " + description + ", id: " + id);
 
     const sections = document.querySelector(".different_sections");
+    
+
     if (!sections) return;
+   
 
     // Just append the one new card — no list needed
     sections.insertAdjacentHTML("beforeend", buildCardHTML({
@@ -21,11 +27,17 @@ export function addingCard(title, description, category, id, image_link = null) 
 
 function buildCardHTML(data) {
     const { title, description, category, shortId, image } = data;
-    let what;
+    var what;
     if (category === 'music'){
         what = 'music';
     } else if (category === 'article'){
         what = 'article';
+    } else if (category === 'code'){
+        what = 'code';
+    } else if (category === 'art'){
+        what = 'art';
+    } else if (category === 'photography'){
+        what = 'photography';
     } else {
         what = 'other';
     }
@@ -59,7 +71,7 @@ function appendToScreen(userCards) {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // Step 1 — try to load cards from Flask (the real source of truth)
+
     try {
         const response = await fetch("http://127.0.0.1:5000/user/card/get", {
             method: 'GET',
@@ -72,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (response.ok && data.CARDS && data.CARDS.length > 0) {
             appendToScreen(data.CARDS);
             p("Cards loaded from server.");
-            return;  // done — don't fall through to localStorage
+            //return;  // done — don't fall through to localStorage
         }
 
     } catch (error) {

@@ -1,0 +1,44 @@
+/* Subcard needs relative positioning for the X to anchor to */
+.song_item {
+    position: relative;
+}
+
+.art-item {
+    position: relative; /* already set, just confirming */
+}
+
+/* The delete button — hidden by default */
+.subcard-delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(231, 76, 60, 0.85);
+    color: white;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    /* Hidden until hover */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s;
+}
+
+/* Show on parent hover */
+.song_item:hover .subcard-delete-btn,
+.art-item:hover .subcard-delete-btn {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.subcard-delete-btn:hover {
+    background: #c0392b;
+    transform: scale(1.15);
+}

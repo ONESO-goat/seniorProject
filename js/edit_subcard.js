@@ -77,9 +77,9 @@ try{
                 headerText.textContent = updated['header'];
                 miniText.textContent = updated['miniText'];
                 
-                if(headerText) displayText.textContent = updatedHeaderText;
-                if(headerText) displayText.style.display = "block";
-                if(miniText) displayText.style.display = "block";
+                //if(headerText) headerText.textContent = updatedHeaderText;
+                //if(headerText) headerText.style.display = "block";
+                //if(miniText) miniText.style.display = "block";
 
                 headerText.style.display = "block";
                 headerTextArea.style.display = "none";

@@ -1,3 +1,6 @@
+// edit_page.js
+import { addDeleteButtons, removeDeleteButtons } from "./delete_card.js";
+
 function addDesAction(des, action){
 
     const a = document.getElementById("action_word");
@@ -15,6 +18,8 @@ document.addEventListener("DOMContentLoaded", async () =>{
     
     const action = document.getElementById("action_word");
     const fdes = document.getElementById('template-description');
+    action.innerHTML = '';
+    fdes.innerHTML = '';
         if (action && fdes) {
             try {
                 const response = await fetch("http://127.0.0.1:5000/user/template/get", {
@@ -63,8 +68,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
         console.error("Missing elements! EditBtn:", editBtn, "ActionWord:", current_actionWord, 'Description:', current_des);
         return; 
     }
-    let updated_des = '';
-    let updated_actionWord = '';
+
     editBtn.addEventListener("click", async () => {
         if (!isEditing) {
             // --- ENTERING EDIT MODE ---
@@ -77,14 +81,15 @@ document.addEventListener("DOMContentLoaded", async () =>{
             
             
             // Swap visibility
+            addDeleteButtons();
             current_des.style.display = "none";
             current_actionWord.style.display = 'none';
             actionWord_textaera.style.display = "block";
             des_textaera.style.display = 'block';
-            actionWord_textaera.focus();
-            let actionFocus = true;
-            let desFocus = false;
-            document.addEventListener('keydown', function(event){
+            //actionWord_textaera.focus();
+            //let actionFocus = true;
+            //let desFocus = false;
+            /*document.addEventListener('keydown', function(event){
                 if(event.key === 'Enter' && actionWord_textaera.focus()){
                     des_textaera.focus();
                     actionFocus = false;
@@ -102,17 +107,33 @@ document.addEventListener("DOMContentLoaded", async () =>{
             
 
             
-            })
-
-
-
-            
+            })*/
         
 
         } else{
-            updated_actionWord += actionWord_textaera.value;
-            updated_des += des_textaera.value; 
+            removeDeleteButtons();
+            const updated_actionWord = actionWord_textaera.value;
+            const updated_des = des_textaera.value; 
+            /*if (updated_des === current_des && updated_actionWord === current_actionWord){
+                isEditing = false;
 
+                current_des.style.display = "block";
+                current_actionWord.style.display = 'block';
+                actionWord_textaera.style.display = "none";
+                des_textaera.style.display = 'none';
+                    
+                current_actionWord.textContent = action_word;
+                
+                current_des.textContent = des;
+
+                editBtnText.textContent = "Edit";
+                
+
+                lucide.createIcons();
+                
+                return;
+            }*/
+        try{
             const response = await fetch("http://127.0.0.1:5000/user/frontpage/edit", {
                 method: 'PATCH',
                 credentials: 'include',
@@ -133,10 +154,15 @@ document.addEventListener("DOMContentLoaded", async () =>{
                 const action_word = set['actionWord'];
                 const des = set['description'];
 
-                current_actionWord = action_word;
-                current_des = des;
+                current_des.style.display = "block";
+                current_actionWord.style.display = 'block';
+                actionWord_textaera.style.display = "none";
+                des_textaera.style.display = 'none';
+                    
 
-                editInput.style.display = "none";
+                current_actionWord.textContent = action_word;
+                current_des.textContent = des;
+
                 
                 editBtnText.textContent = "Edit";
                 isEditing = false;
@@ -146,6 +172,9 @@ document.addEventListener("DOMContentLoaded", async () =>{
             } else {
                 alert(data.ERROR || "Failed to save.");
                 console.log(`unexpected error when processing about: ${data.ERROR}`)
+             }} 
+             catch(e){
+                console.error(e);
              }
         }})
 

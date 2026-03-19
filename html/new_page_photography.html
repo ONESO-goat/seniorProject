@@ -1,5 +1,5 @@
 
-<!--new_page_music.html-->
+<!--new_page_art.html-->
 
 
 <!DOCTYPE html>
@@ -9,6 +9,7 @@
 
         <script src="https://unpkg.com/lucide@latest"></script>
         <link rel="stylesheet" href="../css/subcard_delete.css">
+        <link rel="stylesheet" href="../css/art_card.css">
         <link rel="stylesheet" href="../css/section_pages.css">
         <link rel="stylesheet" href="../css/button.css">
         <link rel="stylesheet" href="../css/add_button.css">
@@ -34,8 +35,8 @@
         </button>
 
         <button class="follow-btn" id="like-btn" title="Like this card">
-            <svg class="star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="stroke: black;">
-                <path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6l1-5v-.5c0-.8-.7-1.5-1.5-1.5L13 1 7.6 7.4C7.2 7.8 7 8.3 7 8.8V19c0 1.1.9 2 2 2h7c.8 0 1.5-.5 1.8-1.2l3-7c.1-.2.2-.5.2-.8v-2z"/>
+            <svg class="star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
             </svg>
         </button>
 
@@ -65,7 +66,7 @@
     <div class="modal-box">
 
         <div class="modal-header">
-            <h2>New Song</h2>
+            <h2>New Art Piece</h2>
             <button class="modal-close" id="modal-close">✕</button>
         </div>
 
@@ -74,33 +75,32 @@
             type="text" 
             class="modal-input" 
             id="card-title" 
-            placeholder="e.g. Sunflower"
+            placeholder="e.g. 'My dog Rosie!'"
             maxlength="60"
         >
 
-        <label class="modal-label">Genre</label>
+        <label class="modal-label">Purpose</label>
         <select class="modal-input" id="card-category">
-            <option value="" disabled selected>Choose a genre...</option>
-            <option value="hip-hop">Hip-Hop</option>
-            <option value="pop">Pop</option>
-            <option value="rock">Rock</option>
-            <option value="indie">Indie</option>
-            <option value="dance">Dance</option>
-            <option value="other">Other</option>
+
+            <option value="" disabled selected>What best fits this image?</option>
+            <option value="personal">Personal</option>
+            <option value="business">Business</option>
+            <option value="education">Education</option>
+            
         </select>
 
         <label class="modal-label">Link</label>
         <textarea 
             class="modal-input modal-textarea" 
             id="card-description" 
-            placeholder="Link to song"
+            placeholder="Describe what or where"
             maxlength="200"
-            style="height: 40px;"
+           
         ></textarea>
         <textarea 
             class="modal-input modal-textarea" 
             id="card-link-image" 
-            placeholder="Cover Art"
+            placeholder="Showcase Image (required)"
             maxlength="200"
             style="height: 40px;"
         ></textarea>
@@ -109,7 +109,7 @@
 
         <div class="modal-actions">
             <button class="modal-cancel" id="modal-cancel">Cancel</button>
-            <button class="modal-submit" id="modal-submit">Add Song</button>
+            <button class="modal-submit" id="modal-submit">Add Piece</button>
         </div>
 
     </div>
@@ -123,11 +123,31 @@
                     <a class="links"></a> 
                 </footer>
     <!--<script src="../js/audioPreview"></script>-->
+    
+    
+<!-- ART LIGHTBOX — shared by all art pieces, JS populates it -->
+<div class="art-lightbox" id="art-lightbox">
+    <div class="lightbox-panel" id="lightbox-panel">
+
+        <img class="lightbox-image" id="lightbox-image" src="" alt="">
+
+        <div class="lightbox-description" id="lightbox-description">
+            <span class="art-style-tag" id="lightbox-style"></span>
+            <h2 id="lightbox-title"></h2>
+            <p id="lightbox-desc-text"></p>
+        </div>
+
+        <button class="lightbox-close" id="lightbox-close">✕</button>
+        <button class="lightbox-flip" id="lightbox-flip">Show Description</button>
+
+    </div>
+</div>
+
     <script type='module' src="../js/add_subcard.js"></script>
     <script  type="module" src="../js/modalSubcard.js"></script>
+    <script type="module" src="../js/art_card.js"></script>
     <script  type="module" src="../js/edit_subcard.js"></script>
     <script  type="module" src="../js/like.js"></script>
     
-
     </body>
 </html>

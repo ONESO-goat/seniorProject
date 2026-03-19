@@ -156,6 +156,10 @@ submitBtn.addEventListener("click", async () => {
             // Brief pause so user sees the success message before modal closes
 
         } else {
+            debug(data);
+            debug(category);
+            debug(title);
+            debug(description);
             setMessage(data.ERROR || "Something went wrong.");
         }
 
