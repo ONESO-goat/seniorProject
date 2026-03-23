@@ -18,9 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    // Show the button now that we know it's someone else's page
-    likeBtn.style.display = "block";
-
     // --- CHECK IF ALREADY FOLLOWING ON PAGE LOAD ---
     // We need to know whether to show a filled or empty star immediately
     try {

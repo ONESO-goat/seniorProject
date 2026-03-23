@@ -158,3 +158,196 @@
     background: #c73db5;
     transform: translateY(-1px);
 }
+
+
+
+
+
+/* IMAGES */
+
+.image-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    border: 2px dashed #e1e4e8;
+    border-radius: 8px;
+    margin-top: 4px;
+    transition: border-color 0.2s;
+    cursor: pointer;
+}
+
+.image-upload-area:hover {
+    border-color: #e24acb;
+}
+
+/* When an image has been selected, shrink the dashed border hint area */
+.image-upload-area.has-image {
+    padding: 8px;
+    border-style: solid;
+    border-color: #e24acb;
+}
+
+.image-upload-btn {
+    background: #f8f0fd;
+    border: 1px solid #e24acb;
+    color: #e24acb;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.image-upload-btn:hover {
+    background: #f0d9fb;
+}
+
+.image-upload-hint {
+    font-size: 12px;
+    color: #b2bec3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* modal.css — replace your existing .modal-box and image section */
+
+/* Give the box a max height and make it scroll internally */
+.modal-box {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 520px;          /* slightly wider */
+    max-height: 85vh;          /* never taller than 85% of screen */
+    overflow-y: auto;          /* scroll inside the box if content overflows */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: transform 0.2s ease;
+
+    /* Custom scrollbar so it doesn't look ugly */
+    scrollbar-width: thin;
+    scrollbar-color: #e24acb #f5f5f5;
+}
+
+.modal-box::-webkit-scrollbar {
+    width: 5px;
+}
+
+.modal-box::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.modal-box::-webkit-scrollbar-thumb {
+    background: #e24acb;
+    border-radius: 10px;
+}
+
+/* Image upload area — tighter, horizontal layout when image is selected */
+.image-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 2px dashed #e1e4e8;
+    border-radius: 8px;
+    margin-top: 4px;
+    transition: border-color 0.2s, padding 0.2s;
+    cursor: pointer;
+}
+
+.image-upload-area:hover {
+    border-color: #e24acb;
+}
+
+/* Once an image is picked, switch to a compact horizontal row */
+.image-upload-area.has-image {
+    flex-direction: row;       /* thumbnail + button side by side */
+    align-items: center;
+    padding: 8px 12px;
+    border-style: solid;
+    border-color: #e24acb;
+    gap: 12px;
+}
+
+/* Preview image — strict size cap */
+#art-preview {
+    width: 70px !important;       /* fixed small thumbnail */
+    height: 70px !important;
+    max-height: 70px !important;  /* override the inline style from last message */
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* When in has-image mode, push hint and button together */
+.image-upload-area.has-image .image-upload-hint {
+    flex: 1;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* filename truncates instead of wrapping */
+}
+
+.image-upload-btn {
+    background: #f8f0fd;
+    border: 1px solid #e24acb;
+    color: #e24acb;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.image-upload-btn:hover {
+    background: #f0d9fb;
+}
+
+.image-upload-hint {
+    font-size: 12px;
+    color: #b2bec3;
+}
+
+/* Stick the action buttons to the bottom so they're always visible */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 12px 0 4px;
+    /* sticky + white background means buttons float above
+       scrolling content and never go off screen */
+}

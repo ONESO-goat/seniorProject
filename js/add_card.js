@@ -71,6 +71,20 @@ function appendToScreen(userCards) {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    const params = new URLSearchParams(window.location.search);
+    const viewingUserId = params.get("user");
+
+    if (viewingUserId) {
+        // We're on someone else's profile — account.js handles their cards
+        // add_card.js should do nothing here
+        lucide.createIcons();
+        return;
+    }
+    const sections = document.querySelector(".different_sections");
+            
+    sections.innerHTML = '';
+    
+    sections.style.textAlign = 'center';
 
     try {
         const response = await fetch("http://127.0.0.1:5000/user/card/get", {
@@ -81,10 +95,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const data = await response.json();
 
-        if (response.ok && data.CARDS && data.CARDS.length > 0) {
+        console.log(`DATA ${data.CARDS}`);
+        if (response.ok && data.CARDS && !data.EMPTY) {
+            console.log(data.CARDS);
             appendToScreen(data.CARDS);
             p("Cards loaded from server.");
             //return;  // done — don't fall through to localStorage
+        } else if (data.EMPTY || data.CARDS === undefined){
+            console.log("[USER TEMPLATE] WE ARE EMPTY");
+            //const sections = document.querySelector(".different_sections");
+            
+            sections.insertAdjacentHTML('afterbegin', '<h1>User doesnt have any cards</h1>');
+            return;
         }
 
     } catch (error) {

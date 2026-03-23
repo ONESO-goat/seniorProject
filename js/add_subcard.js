@@ -1,4 +1,4 @@
-import { debug } from "./utils.js";
+import { debug, p } from "./utils.js";
 
 import { buildArtCard, initArtCards } from './art_card.js';
 // add_subcard.js
@@ -190,6 +190,10 @@ function addHeaderMiniText(header, miniText){
 
 
 export async function loadCardById(shortId){
+    const base = document.querySelector(".three_songs_per_row");
+    base.innerHTML = '';
+    base.style.textAlign = 'center';
+            
     try{
         const response = await fetch(`http://127.0.0.1:5000/card/get/${shortId}`, {
             method: 'GET',
@@ -197,23 +201,26 @@ export async function loadCardById(shortId){
             headers: { "Content-Type": 'application/json' }
         });
         const data = await response.json();
-        if (response.ok && data.MESSAGE){
-        
+        p(`MESSAGE ${data.MESSAGE}`);
+        if (response.ok && data.MESSAGE && !data.EMPTY){
+            console.log(data.EMPTY);
             const u = data.CARDS;
-            
+            p('CARDS');
+            console.log(u);
             const home = data.HOME;
-            debug("HOME");
-            debug(home);
-        debug("WE ARE NOW LOOKING FOR THE LIKE BUTTON")
-
-            if (data.OWNER === false){
-                debug("NOT OWNER")
+            p('HOME');
+            console.log(home);
+            
+        if (data.OWNER === false){
+            
+            debug("NOT OWNER")
             const likeBtn = document.getElementById("like-btn");
             const editBtn = document.querySelector(".edit-btn");
             const addBtn = document.querySelector(".add-btn");
             if (editBtn) editBtn.style.display = 'none';
             if (addBtn) addBtn.style.display = 'none';
             if (likeBtn) likeBtn.style.display = 'block';
+            
 
         } else{
             const likeBtn = document.getElementById("like-btn");
@@ -221,7 +228,7 @@ export async function loadCardById(shortId){
 
         }
             addHeaderMiniText(home.header, home.miniText);
-
+            p(`HEADER ${home.header}`);
             for (var i = 0; i < u.length; i++){
                 const current_subCard = u[i];
                 const current_id = current_subCard.id;
@@ -246,7 +253,22 @@ export async function loadCardById(shortId){
                 current_id
 
             );}
-        } 
+        } else if(data.EMPTY){
+            
+            addHeaderMiniText(data.HOME.header, data.HOME.miniText);
+
+            
+            console.log("WE ARE EMPTY");
+            const base = document.querySelector(".three_songs_per_row");
+            base.style.textAlign = 'center';
+            base.style.justifyContent = 'center';
+            base.style.display = 'flex';
+            
+            
+            base.innerHTML = '<h1>Card doesnt contain any content</h1>';
+            
+    
+        }
         else {
             console.error(("User or Card not found:", data.ERROR));
         }
@@ -331,11 +353,14 @@ document.addEventListener("DOMContentLoaded", async () =>{
     });
 
     const data = await response.json();
+    p(`MESSAGE: ${data.MESSAGE}`);
     if (response.ok && data.MESSAGE){
         const cards = data.CARD;
         const home = data.HOME;
-        debug("HOME");
+        debug("HOME the one im looking for");
         debug(home);
+        debug("AFTER")
+        debug(`HEADER ${home.header} MINI-TEXT ${home.miniText}`);
        
 
         addHeaderMiniText(home.header, home.miniText);

@@ -3,6 +3,75 @@ import { addSubcard } from './add_subcard.js'
 import { debug } from './utils.js'
 // --- GRAB ELEMENTS ---
 
+// modalSubcard.js — add this block alongside your existing modal logic
+
+// Grab the new elements
+
+// IMAGES
+const fileInput      = document.getElementById("art-file-input");
+const uploadBtn      = document.getElementById("image-upload-btn");
+const artPreview     = document.getElementById("art-preview");
+const uploadArea     = document.getElementById("image-upload-area");
+const uploadHint     = document.getElementById("image-upload-hint");
+
+// This variable holds the base64 string of the selected image
+// It's declared at module scope so the submit handler can read it
+let selectedImageBase64 = null;
+
+// Clicking the button OR the dashed area opens the file picker
+if (uploadBtn) {
+    uploadBtn.addEventListener("click", () => {
+        fileInput.click();
+        // fileInput is hidden — .click() programmatically opens
+        // the OS file browser / camera roll
+    });
+}
+
+if (uploadArea) {
+    uploadArea.addEventListener("click", (e) => {
+        // Only trigger if they didn't click the button itself
+        // (button has its own listener above, avoid double-firing)
+        if (e.target !== uploadBtn) {
+            fileInput.click();
+        }
+    });
+}
+
+// When the user picks a file
+if (fileInput) {
+    fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        // files[0] is the first selected file
+        // accept="image/*" on the input means only images appear in the picker
+
+        if (!file) return;
+
+        // FileReader is a built-in browser API that reads file contents
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            // e.target.result is the full base64 string
+            // looks like: "data:image/jpeg;base64,/9j/4AAQSkZJRgAB..."
+            selectedImageBase64 = e.target.result;
+
+            // Show the preview image
+            artPreview.src = selectedImageBase64;
+            artPreview.style.display = "block";
+
+            // Update the hint text to show the filename
+            uploadHint.textContent = file.name;
+
+            // Add the has-image class to shrink the dashed border area
+            uploadArea.classList.add("has-image");
+        };
+
+        // This is what actually starts the read — without this line nothing happens
+        reader.readAsDataURL(file);
+    });
+}
+
+
+
 const addBtn = document.querySelector(".add-btn");
 // The + button already in your template.html
 
@@ -40,6 +109,16 @@ function closeModal() {
     // Removing "active" reverses the CSS transitions — fades out
 
     // Clear all fields so next time the modal opens it's fresh
+
+     selectedImageBase64 = null;
+    if (artPreview) {
+        artPreview.src = "";
+        artPreview.style.display = "none";
+    }
+    if (uploadHint) uploadHint.textContent = "No image selected";
+    if (uploadArea) uploadArea.classList.remove("has-image");
+    if (fileInput)  fileInput.value = "";
+
     titleInput.value = "";
     categoryInput.value = "";
     descInput.value = "";
@@ -91,7 +170,7 @@ modal.addEventListener("click", (e) => {
 // --- SUBMIT ---
 if (submitBtn){
 submitBtn.addEventListener("click", async () => {
-
+    var type;
     const title = titleInput.value.trim();
     const category = categoryInput.value;
     const description = descInput.value.trim();
@@ -124,6 +203,23 @@ submitBtn.addEventListener("click", async () => {
 
         }
 
+        if (category){
+            const cata = await fetch("http://127.0.0.1:5000/category/get",{
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    stuff: category
+                })
+            })
+            const d = await cata.json();
+            type = d.TYPE;
+        }
+        if (!selectedImageBase64 && type === 'art' || !selectedImageBase64 && type === 'photography') {
+            setMessage("Please select an image.");
+            return;
+        }
+
         const response = await fetch("http://127.0.0.1:5000/subcard/create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -133,7 +229,8 @@ submitBtn.addEventListener("click", async () => {
                 title: title,
                 category: category,
                 description: description,
-                card_id: currentCardShortId
+                card_id: currentCardShortId,
+                image: selectedImageBase64
             })
         });
 
@@ -174,3 +271,7 @@ submitBtn.addEventListener("click", async () => {
         submitBtn.textContent = "Create Card";
     }
 });}
+
+
+
+

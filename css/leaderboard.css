@@ -1,0 +1,138 @@
+/* Leaderboard layout — overrides the normal grid */
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;   /* one per row */
+    gap: 12px;
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Base leaderboard row */
+.lb-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 24px;
+    background: white;
+    border-radius: 16px;
+    border: 2px solid #e1e4e8;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lb-card:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* Rank number on the left */
+.lb-rank {
+    font-size: 22px;
+    font-weight: 800;
+    min-width: 40px;
+    text-align: center;
+    color: var(--text-light);
+}
+
+/* Avatar circle */
+.lb-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e1e4e8;
+    flex-shrink: 0;
+}
+
+/* Name and action word */
+.lb-info {
+    flex: 1;
+}
+
+.lb-info h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.lb-info p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+/* Points on the right */
+.lb-points {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+/* ---- TOP 3 SPECIAL STYLES ---- */
+
+/* 1st place — gold */
+.lb-card.rank-1 {
+    border-color: #f1c40f;
+    background: linear-gradient(135deg, #fffdf0, white);
+    padding: 22px 28px;       /* bigger */
+    border-width: 3px;
+}
+
+.lb-card.rank-1 .lb-rank {
+    font-size: 30px;
+    color: #f1c40f;
+}
+
+.lb-card.rank-1 .lb-avatar {
+    width: 68px;
+    height: 68px;
+    border-color: #f1c40f;
+}
+
+.lb-card.rank-1 .lb-info h3 {
+    font-size: 20px;
+}
+
+/* 2nd place — silver */
+.lb-card.rank-2 {
+    border-color: #95a5a6;
+    background: linear-gradient(135deg, #f8f9f9, white);
+    padding: 20px 26px;
+    border-width: 3px;
+}
+
+.lb-card.rank-2 .lb-rank {
+    font-size: 26px;
+    color: #95a5a6;
+}
+
+.lb-card.rank-2 .lb-avatar {
+    width: 62px;
+    height: 62px;
+    border-color: #95a5a6;
+}
+
+.lb-card.rank-2 .lb-info h3 {
+    font-size: 18px;
+}
+
+/* 3rd place — bronze */
+.lb-card.rank-3 {
+    border-color: #e67e22;
+    background: linear-gradient(135deg, #fdf6f0, white);
+    padding: 18px 24px;
+    border-width: 3px;
+}
+
+.lb-card.rank-3 .lb-rank {
+    font-size: 24px;
+    color: #e67e22;
+}
+
+.lb-card.rank-3 .lb-avatar {
+    width: 58px;
+    height: 58px;
+    border-color: #e67e22;
+}

@@ -6,6 +6,7 @@
 <head>
     <title >PanthoFlow - Feed</title>
     <link rel="stylesheet" href="../css/frontpage.css">
+    <link rel="stylesheet" href="../css/leaderboard.css">
     <link rel="icon" href="../images/betterPantho.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/logout_button.css">
     <!--<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">-->
@@ -16,13 +17,12 @@
     <aside class="sidebar">
         <div class="logo">PanthoFlow</div>
         <nav class="nav-menu">
-            <a href="#" class="nav-item active" main-page="fyp">What's New</a>
-            <a href="#" class="nav-item" main-page="events">Events</a>
-            <a href="#" class="nav-item" main-page="following">Following</a>
-            <a href="#" class="nav-item" main-page="friends">Friends</a> 
-            <a href="#" class="nav-item" main-page="planner">Planner</a>
-            <a href="#" class="nav-item" main-page="classrooms">Design Groups</a>
-            <a href="#" class="nav-item" main-page="leaderboard">Leaderboard</a>
+            <a href="#" class="nav-item" data-page="Discovery">Discovery</a>
+            <a href="#" class="nav-item" data-page="Following">Following</a>
+            <a href="#" class="nav-item" data-page="Friends">Friends</a> 
+            <a href="#" class="nav-item" data-page="Classrooms">Groups (coming soon)</a>
+            <a href="#" class="nav-item" data-page="Leaderboard">Leaderboard</a>
+            <a href="#" class="nav-item" data-page="Updates">Updates</a>
         </nav>
         <!--<div class="sidebar-label">Favorites</div>-->
         <nav class="nav-menu">
@@ -42,7 +42,7 @@
     <main class="content-area">
         <header class="main-header">
             <div class="search-bar-wrapper">
-                <input type="text" class="search-input" placeholder="Search people, schools...">
+                <input id='search-bar' type="text" class="search-input" placeholder="Search people, schools...">
             </div>
             <div class="logout">
                 <button>Logout</button>
@@ -50,30 +50,21 @@
         </header>
 
         <div class="feed-header">
-            <h1>Discovery</h1>
+            <h1 id="page-header"></h1>
         </div>
 
-         <section class="user-grid" id="user-section">
-            <a href="../html/my_page.html" class="profile-card color-override">
-                <div class="card-cover"></div>
-                <div class="card-content">
-                    <img src="../images/betterPantho.png" class="card-avatar">
-                    <h3>Julius Cylien</h3>
-                    <p>Digital God</p>
-                    <div class="card-stats">
-                        <span><strong id="follower-count">206M</strong> followers</span>
-                    </div>
-                </div>
-            </a>
-
-
+        <section class="user-grid" id="user-section">
             
-            </section>
+            
+        </section>
+        <div id="updateText" style="display: none;"></div>
 
         
     </main>
-    <script src="../js/main.js"></script>
-    <script src="../js/add_users_to_screen.js"></script>
+    <script type='module' src="../js/logout.js"></script>
+    <script type='module' src="../js/mainPage/searchBar.js"></script>
+    <script type='module' src="../js/mainPage/mainPageRole.js"></script>
+    <script type='module' src="../js/mainPage/mainPageOptions.js"></script>
 </div>
 
 </body>

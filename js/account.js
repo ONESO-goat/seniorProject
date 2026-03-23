@@ -127,7 +127,7 @@ async function loadUserById(shortId){
         
             const u = data.USER;
 
-            const aboutMe = u['about_me'];
+            
             const aboutMeArea = document.querySelector('.learn_more_section');
             aboutMeArea.innerHTML = '';
             aboutMeArea.innerHTML = `<a class="learn_more" href="../html/aboutme_template.html?user=${shortId}">More about me ></a>`;
@@ -135,8 +135,10 @@ async function loadUserById(shortId){
             const userCardsOnPage = data.CARDS;
             const sections = document.querySelector(".different_sections");
             sections.innerHTML = '';
-            console.log(u);
+            sections.style.textAlign = 'center';
 
+
+           
             if (data.OWNER === false){
                 
                 
@@ -146,12 +148,12 @@ async function loadUserById(shortId){
                 if (addBtn) addBtn.style.display = 'none';
 
                 
-        } else{
-            const likeButton = document.getElementById("like-btn");
-            const followBtn = document.getElementById('follow-btn');
-            if (followBtn) followBtn.style.display = 'none';
-            if (likeButton) likeButton.style.display = 'none';
-        }
+            } else{
+                const likeButton = document.getElementById("like-btn");
+                const followBtn = document.getElementById('follow-btn');
+                if (followBtn) followBtn.style.display = 'none';
+                if (likeButton) likeButton.style.display = 'none';
+            }
 
             const test = u['action_word'];
             
@@ -163,8 +165,12 @@ async function loadUserById(shortId){
                                u.page_description);
 
             
-            if (!userCardsOnPage){
-                console.error("User cards not seen on page.");
+            if (userCardsOnPage.length === 0){
+               
+                console.log("[USER TEMPLATE] WE ARE EMPTY");
+                //const sections = document.querySelector(".different_sections");
+                sections.insertAdjacentHTML('afterbegin', '<h1>User doesnt have any cards</h1>');
+                return;
             }
             
     

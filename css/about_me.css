@@ -1,19 +1,6 @@
 /*about_me.css*/
 
-.my_photo {
-    width: 60vw;
-    max-width: 700px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background-color: whitesmoke;
-    border: 1px solid black;
 
-    cursor: pointer;
-    transition: max-width 0.5s;
-    box-shadow:-3px 8px 20px rgba(0, 0, 0, 0.8);
-
-    overflow: hidden;   /* ⬅ IMPORTANT */
-}
 /* Container to hold both the head and the hat */
 .m {
     justify-content: center;

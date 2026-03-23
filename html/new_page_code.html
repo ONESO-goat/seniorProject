@@ -34,9 +34,9 @@
             <span id="edit-wbtn-text">Edit</span>
         </button>
 
-        <button class="follow-btn" id="like-btn" title="Like this card" style="border-color: solid black;">
-            <svg class="star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        <button class="follow-btn" id="like-btn" title="Like this card">
+            <svg class="star-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="stroke: black;">
+                <path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6l1-5v-.5c0-.8-.7-1.5-1.5-1.5L13 1 7.6 7.4C7.2 7.8 7 8.3 7 8.8V19c0 1.1.9 2 2 2h7c.8 0 1.5-.5 1.8-1.2l3-7c.1-.2.2-.5.2-.8v-2z"/>
             </svg>
         </button>
 
@@ -101,13 +101,21 @@
             maxlength="200"
             style="height: 40px;"
         ></textarea>
-        <textarea 
-            class="modal-input modal-textarea" 
-            id="card-link-image" 
-            placeholder="Cover Art"
-            maxlength="200"
-            style="height: 40px;"
-        ></textarea>
+        
+<label class="modal-label">Artwork Image <span style="color:#e74c3c">*</span></label>
+<div class="image-upload-area" id="image-upload-area">
+    <img 
+        id="art-preview" 
+        src="" 
+        alt=""
+        style="display:none; width:100%; max-height:180px; object-fit:contain; border-radius:8px; margin-bottom:8px;"
+    >
+    <button type="button" class="image-upload-btn" id="image-upload-btn">
+        📁 Choose Image
+    </button>
+    <span class="image-upload-hint" id="image-upload-hint">No image selected</span>
+    <input type="file" id="art-file-input" accept="image/*" style="display:none;">
+</div>
 
         <p class="modal-message" id="modal-message"></p>
 

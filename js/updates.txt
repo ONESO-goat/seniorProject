@@ -1,0 +1,14 @@
+PanthoFlow V1.0:
+
+    3/20/26, 6:00 pm
+
+    Version 1 of PanthoFlow is finally here, though it might never see a day online,
+    it's refreshing completeing a project fully till the end.
+
+    PanthoFlow, creator Julius Cylien residing in Burlington MA, created PanthoFlow
+    as an senior project in high school. Orginally a simple portfilio, Julius decided
+    to expand PanthoFlow into a Full Stack project, getting inspiration from other
+    creative induced markets like Canva. PanthoFlow's main objective is to allow
+    crators, scholars, or those who need a platform to showcase their work a easy
+    and creative experience to do so.
+
