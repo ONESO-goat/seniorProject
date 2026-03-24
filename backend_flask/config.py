@@ -70,6 +70,16 @@ def serve_js(filename):
 def serve_images(filename):
     return send_from_directory('images', filename)
 
+@app.route('/debug-files')
+def debug_files():
+    import os
+    # Shows all files and folders from where Flask is running
+    result = []
+    for item in os.listdir('.'):
+        result.append(item)
+    return "<br>".join(sorted(result))
+
+
 @app.after_request
 def after_request(response):
     print(f"\n{'='*60}")
