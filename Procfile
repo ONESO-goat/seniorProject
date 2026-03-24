@@ -1,1 +1,1 @@
-web: gunicorn backend_flask.config:app
+web: gunicorn run:app
