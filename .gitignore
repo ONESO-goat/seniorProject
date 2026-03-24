@@ -14,3 +14,8 @@ coding_cover.jpg
 signup.html
 *.env
 key.env
+key.env
+*.env
+__pycache__/
+*.pyc
+instance/
