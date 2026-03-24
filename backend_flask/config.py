@@ -74,6 +74,16 @@ def serve_html(filename):
 def home():
     return send_from_directory('login_signin', 'index.html')
 
+
+@app.route('/')
+def index():
+    routes = []
+    for rule in app.url_map.iter_rules():
+        # ✅ Join the set directly, not a string version of it
+        methods = ', '.join(sorted(rule.methods))
+        routes.append(f"{rule.endpoint}: {rule.rule} [{methods}]")
+    return "<br>".join(routes)
+
 @app.route('/css/<path:filename>')
 def serve_css(filename):
     return send_from_directory('css', filename)
