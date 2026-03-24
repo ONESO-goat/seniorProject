@@ -1,11 +1,10 @@
 /.vscode/
 /app
-*.py
-*.gitignore
 test.html
 dashboard.html
 styles.html
 /instance
+Game/
 a.out
 test.js
 *.cpp
@@ -14,8 +13,5 @@ coding_cover.jpg
 signup.html
 *.env
 key.env
-key.env
-*.env
-__pycache__/
 *.pyc
 instance/
