@@ -40,36 +40,6 @@ CORS(app,
 
 db = SQLAlchemy(app)
 
-# ✅ Single route for /
-@app.route('/')
-def home():
-    return send_from_directory('login_signin', 'index.html')
-
-# Serve login_signin folder (for signup.html etc.)
-@app.route('/login_signin/<path:filename>')
-def serve_login(filename):
-    return send_from_directory('login_signin', filename)
-
-# Serve HTML files
-@app.route('/html/<path:filename>')
-def serve_html(filename):
-    return send_from_directory('html', filename)
-
-# Serve CSS files
-@app.route('/css/<path:filename>')
-def serve_css(filename):
-    return send_from_directory('css', filename)
-
-# Serve JS files
-@app.route('/js/<path:filename>')
-def serve_js(filename):
-    return send_from_directory('js', filename)
-
-# Serve images
-@app.route('/images/<path:filename>')
-def serve_images(filename):
-    return send_from_directory('images', filename)
-
 @app.route('/debug-files')
 def debug_files():
     import os
