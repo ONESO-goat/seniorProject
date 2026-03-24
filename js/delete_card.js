@@ -25,7 +25,7 @@ export function addDeleteButtons() {
             if (!confirmed) return;
 
             try {
-                const response = await fetch("http://127.0.0.1:5000/card/remove", {
+                const response = await fetch("/card/remove", {
                     method: "DELETE",
                     credentials: "include",
                     headers: { "Content-Type": "application/json" },
@@ -78,7 +78,7 @@ export function addDeleteButtonsSubcards() {
             if (!confirmed) return;
 
             try {
-                const response = await fetch("http://127.0.0.1:5000/subcard/remove", {
+                const response = await fetch("/subcard/remove", {
                     method: "DELETE",
                     credentials: "include",
                     headers: { "Content-Type": "application/json" },

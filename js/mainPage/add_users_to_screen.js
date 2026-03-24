@@ -54,7 +54,7 @@ export async function discovery() {
 firstAdd.insertAdjacentHTML('afterbegin',s);
     
 
-    const response = await fetch("http://127.0.0.1:5000/auth", {
+    const response = await fetch("/auth", {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

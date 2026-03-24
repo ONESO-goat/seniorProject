@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // --- CHECK IF ALREADY FOLLOWING ON PAGE LOAD ---
     // We need to know whether to show a filled or empty star immediately
     try {
-        const response = await fetch(`http://127.0.0.1:5000/card/like/check/${viewingCardId}`, {
+        const response = await fetch(`/card/like/check/${viewingCardId}`, {
             method: "GET",
             credentials: "include",
             headers: { "Content-Type": "application/json" }
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // 300ms matches the CSS transition duration, then removes the class
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/card/like/${viewingCardId}`, {
+            const response = await fetch(`/card/like/${viewingCardId}`, {
                 method: "PATCH",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" }

@@ -15,7 +15,7 @@ export async function leaderBoard() {
     section.style.display = 'block';
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/users/points/get", {
+        const response = await fetch("/users/points/get", {
             method: 'GET',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' }
@@ -81,7 +81,7 @@ export async function leaderBoard() {
 
 export async function following(){ 
      try{
-        const response = await fetch("http://127.0.0.1:5000/user/following/get", {
+        const response = await fetch("/user/following/get", {
             method: 'GET',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json'}
@@ -123,7 +123,7 @@ export async function following(){
 export async function friends(){ 
     
     try{
-        const response = await fetch("http://127.0.0.1:5000/user/friends/get", {
+        const response = await fetch("/user/friends/get", {
             method: 'GET',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json'}

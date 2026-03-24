@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // ✅ Check ownership before touching any buttons
     try {
-        const response = await fetch(`http://127.0.0.1:5000/card/get/${cardId}`, {
+        const response = await fetch(`/card/get/${cardId}`, {
             method: 'GET',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' }
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!Id) { console.error("Card id missing"); return; }
 
             try {
-                const response = await fetch('http://127.0.0.1:5000/card/edit', {
+                const response = await fetch('/card/edit', {
                     method: 'PATCH',
                     credentials: 'include',
                     headers: { "Content-Type": "application/json" },

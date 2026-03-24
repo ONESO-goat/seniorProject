@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     sections.style.textAlign = 'center';
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/user/card/get", {
+        const response = await fetch("/user/card/get", {
             method: 'GET',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' }

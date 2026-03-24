@@ -115,7 +115,7 @@ submitBtn.addEventListener("click", async () => {
     submitBtn.textContent = "Creating...";
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/card/create", {
+        const response = await fetch("/card/create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",

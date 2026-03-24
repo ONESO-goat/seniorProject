@@ -68,15 +68,30 @@ def serve_static(filename):
 
 @app.route('/html/<path:filename>')
 def serve_html(filename):
-    return send_from_directory('../html', filename)
+    return send_from_directory('html', filename)
 
 @app.route('/')
-def index():
-    routes = []
-    for rule in app.url_map.iter_rules():
-        routes.append(f"{rule.endpoint}: {rule.rule} [{', '.join(str(rule.methods))}]")
-    return "<br>".join(routes)
+def home():
+    return send_from_directory('login_signin', 'index.html')
 
+@app.route('/css/<path:filename>')
+def serve_css(filename):
+    return send_from_directory('css', filename)
+
+# Serve JS files
+@app.route('/js/<path:filename>')
+def serve_js(filename):
+    return send_from_directory('js', filename)
+
+# Serve images
+@app.route('/images/<path:filename>')
+def serve_images(filename):
+    return send_from_directory('images', filename)
+
+# Serve login_signin folder
+@app.route('/login_signin/<path:filename>')
+def serve_login(filename):
+    return send_from_directory('login_signin', filename)
 
 @app.before_request
 def log_session_debug():
@@ -91,6 +106,6 @@ def log_session_debug():
 # Add this at the bottom of config.py, after db = SQLAlchemy(app)
 with app.app_context():
     db.create_all()
-    
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

@@ -195,7 +195,7 @@ export async function loadCardById(shortId){
     base.style.textAlign = 'center';
             
     try{
-        const response = await fetch(`http://127.0.0.1:5000/card/get/${shortId}`, {
+        const response = await fetch(`/card/get/${shortId}`, {
             method: 'GET',
             credentials: 'include',
             headers: { "Content-Type": 'application/json' }
@@ -301,7 +301,7 @@ function attachDeleteButton(element, subcardId) {
         if (!confirmed) return;
 
         try {
-            const response = await fetch("http://127.0.0.1:5000/subcard/remove", {
+            const response = await fetch("/subcard/remove", {
                 method: "DELETE",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
     } else {
 
 
-    const response = await fetch(`http://127.0.0.1:5000/card/get/${viewingCardId}`, {
+    const response = await fetch(`/card/get/${viewingCardId}`, {
         method: 'GET',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' }

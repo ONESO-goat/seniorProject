@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
     fdes.innerHTML = '';
         if (action && fdes) {
             try {
-                const response = await fetch("http://127.0.0.1:5000/user/template/get", {
+                const response = await fetch("/user/template/get", {
                     method: 'GET',
                     credentials: 'include',
                     headers: { 'Content-Type': 'application/json' }
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
                 return;
             }*/
         try{
-            const response = await fetch("http://127.0.0.1:5000/user/frontpage/edit", {
+            const response = await fetch("/user/frontpage/edit", {
                 method: 'PATCH',
                 credentials: 'include',
                 headers:{
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
     back_button.addEventListener("click", async () => {
         m("BACK WAS PUSHED!!!!");
         try{
-        const get_id = await fetch('http://127.0.0.1:5000/user/get/id', {
+        const get_id = await fetch('/user/get/id', {
             method: 'GET', 
             credentials: 'include', 
             headers: { "Content-Type": 'application/json'}

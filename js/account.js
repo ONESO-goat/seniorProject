@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadUserById(shortId){
     try{
-        const response = await fetch(`http://127.0.0.1:5000/user/get/${shortId}`, {
+        const response = await fetch(`/user/get/${shortId}`, {
             method: 'GET',
             credentials: 'include',
             headers: { "Content-Type": 'application/type' }

@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const possibleUserChoice = localStorage.getItem("pf_userChoice");
 
  // --- STEP 4: Send to Flask (Updated for Debugging) ---
-fetch("http://127.0.0.1:5000/auth/signup", {
+fetch("/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",

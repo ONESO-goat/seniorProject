@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const user = params.get("user");
     if (user){
         try {
-            const response = await fetch(`http://127.0.0.1:5000/user/aboutme/get/${user}`, {
+            const response = await fetch(`/user/aboutme/get/${user}`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' }
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     if (Hi) {
         try {
-            const response = await fetch("http://127.0.0.1:5000/user/aboutme/get", {
+            const response = await fetch("/user/aboutme/get", {
                 method: 'GET',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' }
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const updatedText = editInput.value;
            
 
-             const response = await fetch('http://127.0.0.1:5000/user/aboutme/edit', { 
+             const response = await fetch('/user/aboutme/edit', { 
                 method: 'PATCH',
                 credentials: 'include',
                 headers: {

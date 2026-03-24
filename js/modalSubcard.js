@@ -204,7 +204,7 @@ submitBtn.addEventListener("click", async () => {
         }
 
         if (category){
-            const cata = await fetch("http://127.0.0.1:5000/category/get",{
+            const cata = await fetch("/category/get",{
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
@@ -220,7 +220,7 @@ submitBtn.addEventListener("click", async () => {
             return;
         }
 
-        const response = await fetch("http://127.0.0.1:5000/subcard/create", {
+        const response = await fetch("/subcard/create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
