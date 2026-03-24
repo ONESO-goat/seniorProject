@@ -17,7 +17,7 @@ app.config.update(
     SECRET_KEY=os.environ.get("SECRET_KEY"),
     SESSION_COOKIE_NAME="portflow_session",
     SESSION_COOKIE_SAMESITE="Lax",
-    SESSION_COOKIE_SECURE=True,      # ✅ must be True on HTTPS (Render uses HTTPS)
+    SESSION_COOKIE_SECURE=os.environ.get("RENDER", False),      # ✅ must be True on HTTPS (Render uses HTTPS)
     SESSION_COOKIE_HTTPONLY=True,
     PERMANENT_SESSION_LIFETIME=timedelta(days=7),
 )
@@ -26,18 +26,19 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # ✅ Updated CORS to include your Render domain
-CORS(app,
-     supports_credentials=True,
-     origins=[
-         "http://127.0.0.1:5000",
-         "http://127.0.0.1:5500",
-         "https://panthoflow.onrender.com"
-     ],
-     allow_headers=["Content-Type", "Authorization"],
-     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-     expose_headers=["Set-Cookie"],
-     max_age=3600)
-
+def _():
+    CORS(app,
+        supports_credentials=True,
+        origins=[
+            "http://127.0.0.1:5000",
+            "http://127.0.0.1:5500",
+            "https://panthoflow.onrender.com"
+        ],
+        allow_headers=["Content-Type", "Authorization"],
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+        expose_headers=["Set-Cookie"],
+        max_age=3600)
+# test
 db = SQLAlchemy(app)
 
 @app.route('/debug-files')
@@ -70,5 +71,3 @@ def log_session_debug():
 with app.app_context():
     db.create_all()
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
