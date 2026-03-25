@@ -16,23 +16,26 @@ def home():
 
 @app.route('/login_signin/<path:filename>')
 def serve_login(filename):
-    return send_from_directory('login_signin', filename)
+    return send_from_directory(os.path.join(BASE_DIR, 'login_signin'), filename)
 
 @app.route('/html/<path:filename>')
 def serve_html(filename):
-    return send_from_directory('html', filename)
+    return send_from_directory(os.path.join(BASE_DIR, 'html'), filename)
+
+import os
+
 
 @app.route('/css/<path:filename>')
 def serve_css(filename):
-    return send_from_directory('css', filename)
+    return send_from_directory(os.path.join(BASE_DIR, 'css'), filename)
 
 @app.route('/js/<path:filename>')
 def serve_js(filename):
-    return send_from_directory('js', filename)
+    return send_from_directory(os.path.join(BASE_DIR, 'js'), filename)
 
 @app.route('/images/<path:filename>')
 def serve_images(filename):
-    return send_from_directory('images', filename)
+    return send_from_directory(os.path.join(BASE_DIR, 'images'), filename)
 
 if os.environ.get("RENDER") is None:
     with app.app_context():
