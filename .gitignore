@@ -5,6 +5,7 @@ dashboard.html
 styles.html
 /instance
 Game/
+/venv
 a.out
 test.js
 *.cpp
